@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: energy-router-sim
+
+server:
+  port: 36750
