@@ -104,7 +104,6 @@ Thumbs.db
 *.p12
 *.jks
 secrets/
-config/
 
 # Heap dumps
 *.hprof

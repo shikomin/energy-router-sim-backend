@@ -1,0 +1,16 @@
+{
+  "simulator": {
+    "stepIntervalMs": 1000,
+    "timeScale": 1.0,
+    "enabled": false
+  },
+  "powerBalance": {
+    "tolerance": 0.01,
+    "maxIterations": 100
+  },
+  "defaults": {
+    "acVoltage": 380.0,
+    "acFrequency": 50.0,
+    "dcVoltage": 800.0
+  }
+}

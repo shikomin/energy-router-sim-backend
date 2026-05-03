@@ -1,0 +1,76 @@
+{
+  "topologies": [
+    {
+      "id": "topo_01",
+      "name": "标准微电网拓扑",
+      "description": "包含交流母线、直流母线、PCS、MPPT、DCDC、BMS及负载的标准微电网拓扑结构",
+      "deviceList": ["bus_ac", "bus_dc", "pcs_01", "mppt_01", "dcdc_01", "dcdc_02", "bms_01", "ac_load_01", "dc_load_01", "meter_01"],
+      "busConnections": [
+        {
+          "busId": "bus_ac",
+          "connectedDevices": ["pcs_01", "ac_load_01", "meter_01"]
+        },
+        {
+          "busId": "bus_dc",
+          "connectedDevices": ["pcs_01", "mppt_01", "dcdc_01", "dc_load_01"]
+        }
+      ],
+      "deviceConnections": [
+        {
+          "fromDeviceId": "meter_01",
+          "toDeviceId": "bus_ac",
+          "connectionType": "AC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "bus_ac",
+          "toDeviceId": "pcs_01",
+          "connectionType": "AC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "pcs_01",
+          "toDeviceId": "bus_dc",
+          "connectionType": "DC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "mppt_01",
+          "toDeviceId": "bus_dc",
+          "connectionType": "DC",
+          "powerFlow": "unidirectional"
+        },
+        {
+          "fromDeviceId": "bus_dc",
+          "toDeviceId": "dcdc_01",
+          "connectionType": "DC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "dcdc_01",
+          "toDeviceId": "dcdc_02",
+          "connectionType": "DC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "dcdc_02",
+          "toDeviceId": "bms_01",
+          "connectionType": "DC",
+          "powerFlow": "bidirectional"
+        },
+        {
+          "fromDeviceId": "bus_dc",
+          "toDeviceId": "dc_load_01",
+          "connectionType": "DC",
+          "powerFlow": "unidirectional"
+        },
+        {
+          "fromDeviceId": "bus_ac",
+          "toDeviceId": "ac_load_01",
+          "connectionType": "AC",
+          "powerFlow": "unidirectional"
+        }
+      ]
+    }
+  ]
+}

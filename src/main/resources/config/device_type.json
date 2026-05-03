@@ -1,0 +1,341 @@
+{
+  "deviceTypes": [
+    {
+      "type": "DCDC",
+      "name": "直流转换器",
+      "description": "用于直流母线之间的电压转换和功率传输",
+      "category": "POWER_CONVERTER",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "ratedPower", "name": "额定功率", "unit": "kW", "default": 50.0},
+          {"key": "batteryStatus", "name": "电池运行状态", "unit": "", "default": 0},
+          {"key": "batteryPower", "name": "电池功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "batteryCurrent", "name": "电池电流", "unit": "0.1A", "default": 0.0},
+          {"key": "batteryVoltage", "name": "电池电压", "unit": "0.1V", "default": 0.0},
+          {"key": "hvVoltage", "name": "高压侧电压", "unit": "0.1V", "default": 0.0},
+          {"key": "moduleTemp", "name": "模块温度", "unit": "0.1℃", "default": 25.0}
+        ],
+        "telesignal": [
+          {"key": "initializing", "name": "初始化", "default": false},
+          {"key": "selfCheck", "name": "自检", "default": false},
+          {"key": "ready", "name": "准备运行", "default": false},
+          {"key": "running", "name": "运行", "default": false}
+        ],
+        "telecontrol": [
+          {"key": "startStop", "name": "启停机", "default": false},
+          {"key": "reset", "name": "系统复位", "default": false}
+        ],
+        "teleadjust": [
+          {"key": "batteryPowerSet", "name": "电池功率给定", "unit": "0.1kW", "default": 0.0, "min": -500.0, "max": 500.0},
+          {"key": "batteryCurrentSet", "name": "电池电流给定", "unit": "0.1A", "default": 0.0, "min": -500.0, "max": 500.0},
+          {"key": "constVoltageSet", "name": "恒压充电电压给定", "unit": "0.1V", "default": 0.0, "min": 0.0, "max": 1500.0},
+          {"key": "hvVoltageSet", "name": "高压侧电压给定", "unit": "0.1V", "default": 0.0, "min": 0.0, "max": 1500.0},
+          {"key": "lvVoltageSet", "name": "低压侧电压给定", "unit": "0.1V", "default": 0.0, "min": 0.0, "max": 1500.0}
+        ]
+      }
+    },
+    {
+      "type": "MPPT",
+      "name": "光伏最大功率点跟踪器",
+      "description": "用于光伏组件的MPPT控制和直流转换",
+      "category": "POWER_CONVERTER",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "ratedPower", "name": "额定功率", "unit": "kW", "default": 100.0},
+          {"key": "pv1Power", "name": "PV1输入功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "pv2Power", "name": "PV2输入功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "pv3Power", "name": "PV3输入功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "pv4Power", "name": "PV4输入功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "pv1Voltage", "name": "PV1输入电压", "unit": "0.1V", "default": 0.0},
+          {"key": "pv2Voltage", "name": "PV2输入电压", "unit": "0.1V", "default": 0.0},
+          {"key": "pv3Voltage", "name": "PV3输入电压", "unit": "0.1V", "default": 0.0},
+          {"key": "pv4Voltage", "name": "PV4输入电压", "unit": "0.1V", "default": 0.0},
+          {"key": "pv1Current", "name": "PV1输入电流", "unit": "0.1A", "default": 0.0},
+          {"key": "pv2Current", "name": "PV2输入电流", "unit": "0.1A", "default": 0.0},
+          {"key": "pv3Current", "name": "PV3输入电流", "unit": "0.1A", "default": 0.0},
+          {"key": "pv4Current", "name": "PV4输入电流", "unit": "0.1A", "default": 0.0},
+          {"key": "hvVoltage", "name": "高压侧电压", "unit": "0.1V", "default": 0.0},
+          {"key": "moduleTemp", "name": "模块温度", "unit": "0.1℃", "default": 25.0}
+        ],
+        "telesignal": [
+          {"key": "initializing", "name": "初始化", "default": false},
+          {"key": "selfCheck", "name": "自检", "default": false},
+          {"key": "ready", "name": "准备运行", "default": false},
+          {"key": "running", "name": "运行", "default": false},
+          {"key": "faultResetLimit", "name": "故障自动复位次数超限", "default": false}
+        ],
+        "telecontrol": [
+          {"key": "startStop", "name": "启停机", "default": false},
+          {"key": "reset", "name": "系统复位", "default": false}
+        ],
+        "teleadjust": [
+          {"key": "hvVoltageSet", "name": "高压侧电压给定", "unit": "10V", "default": 0.0, "min": 0.0, "max": 1500.0},
+          {"key": "powerLimitEnable", "name": "PV限功率使能", "default": false},
+          {"key": "powerLimitSet", "name": "PV限功率给定", "unit": "10kW", "default": 0.0, "min": 0.0, "max": 500.0}
+        ]
+      }
+    },
+    {
+      "type": "PCS",
+      "name": "储能变流器(ACDC)",
+      "description": "用于交直流双向功率转换，支持并离网运行",
+      "category": "POWER_CONVERTER",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "acVoltageAB", "name": "交流AB线电压", "unit": "0.1V", "default": 380.0},
+          {"key": "acVoltageBC", "name": "交流BC线电压", "unit": "0.1V", "default": 380.0},
+          {"key": "acVoltageCA", "name": "交流CA线电压", "unit": "0.1V", "default": 380.0},
+          {"key": "acVoltageA", "name": "交流A相电压", "unit": "0.1V", "default": 220.0},
+          {"key": "acVoltageB", "name": "交流B相电压", "unit": "0.1V", "default": 220.0},
+          {"key": "acVoltageC", "name": "交流C相电压", "unit": "0.1V", "default": 220.0},
+          {"key": "acCurrentA", "name": "交流A相电流", "unit": "0.1A", "default": 0.0},
+          {"key": "acCurrentB", "name": "交流B相电流", "unit": "0.1A", "default": 0.0},
+          {"key": "acCurrentC", "name": "交流C相电流", "unit": "0.1A", "default": 0.0},
+          {"key": "acFrequency", "name": "交流频率", "unit": "0.01Hz", "default": 5000},
+          {"key": "apparentPower", "name": "视在功率", "unit": "0.1kVA", "default": 0.0},
+          {"key": "activePower", "name": "有功功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "reactivePower", "name": "无功功率", "unit": "0.1kVar", "default": 0.0},
+          {"key": "powerFactor", "name": "功率因数", "unit": "0.001", "default": 1000},
+          {"key": "dcPower", "name": "直流功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "totalBusVoltage", "name": "总母线电压", "unit": "0.1V", "default": 0.0},
+          {"key": "positiveBusVoltage", "name": "正母线电压", "unit": "0.1V", "default": 0.0},
+          {"key": "negativeBusVoltage", "name": "负母线电压", "unit": "0.1V", "default": 0.0},
+          {"key": "batteryVoltage", "name": "电池电压", "unit": "0.1V", "default": 0.0},
+          {"key": "batteryCurrent", "name": "电池电流", "unit": "0.1A", "default": 0.0},
+          {"key": "igbtTempA", "name": "A相IGBT温度", "unit": "0.1℃", "default": 25.0},
+          {"key": "igbtTempB", "name": "B相IGBT温度", "unit": "0.1℃", "default": 25.0},
+          {"key": "igbtTempC", "name": "C相IGBT温度", "unit": "0.1℃", "default": 25.0},
+          {"key": "envTemp", "name": "环境温度", "unit": "0.1℃", "default": 25.0},
+          {"key": "deratingFactor", "name": "降额系数", "unit": "0.01", "default": 100}
+        ],
+        "telesignal": [
+          {"key": "startStop", "name": "启停机", "default": 0},
+          {"key": "starting", "name": "启动中", "default": 0},
+          {"key": "charging", "name": "充电", "default": 0},
+          {"key": "discharging", "name": "放电", "default": 0},
+          {"key": "standby", "name": "待机", "default": 1},
+          {"key": "fault", "name": "故障", "default": 0},
+          {"key": "derating", "name": "降额", "default": 0},
+          {"key": "alarm", "name": "告警", "default": 0},
+          {"key": "gridConnected", "name": "并离网状态", "default": 1}
+        ],
+        "telecontrol": [
+          {"key": "auxPowerSleep", "name": "辅源休眠指令", "default": false},
+          {"key": "parallelEnable", "name": "并机功能", "default": false},
+          {"key": "hvrtLvrt", "name": "HVRT/LVRT", "default": false},
+          {"key": "activeIsland", "name": "主动孤岛", "default": false},
+          {"key": "gridFaultRecovery", "name": "电网异常自恢复", "default": false},
+          {"key": "autoStart", "name": "上电自启动", "default": false}
+        ],
+        "teleadjust": [
+          {"key": "powerOnOff", "name": "开关机", "default": 0},
+          {"key": "activePowerSet", "name": "有功功率", "unit": "0.1kW", "default": 0.0, "min": -500.0, "max": 500.0},
+          {"key": "reactivePowerSet", "name": "无功功率", "unit": "0.1kVar", "default": 0.0, "min": -500.0, "max": 500.0},
+          {"key": "powerFactorSet", "name": "功率因数", "unit": "0.001", "default": 1000, "min": -1000, "max": 1000},
+          {"key": "maxDcDischargeCurrent", "name": "最大直流放电电流", "unit": "0.1A", "default": 500.0, "min": 0.0, "max": 1000.0},
+          {"key": "maxDcChargeCurrent", "name": "最大直流充电电流", "unit": "0.1A", "default": 500.0, "min": 0.0, "max": 1000.0},
+          {"key": "minDcDischargeVoltage", "name": "最低直流放电电压", "unit": "0.1V", "default": 500.0, "min": 0.0, "max": 1500.0},
+          {"key": "minDcChargeVoltage", "name": "最低直流充电电压", "unit": "0.1V", "default": 500.0, "min": 0.0, "max": 1500.0},
+          {"key": "gridModeSwitch", "name": "并网离网切换指令", "default": 0},
+          {"key": "offGridVoltage", "name": "离网输出电压", "unit": "0.1V", "default": 220.0, "min": 0.0, "max": 380.0},
+          {"key": "offGridFrequency", "name": "离网输出频率", "unit": "0.01Hz", "default": 5000, "min": 4500, "max": 5500},
+          {"key": "powerSoftStartRate", "name": "功率软启速率", "unit": "1%/s", "default": 10, "min": 1, "max": 100},
+          {"key": "systemMode", "name": "系统运行模式设置", "default": 0}
+        ]
+      }
+    },
+    {
+      "type": "BMS",
+      "name": "电池管理系统",
+      "description": "用于监控和管理电池簇的运行状态",
+      "category": "BATTERY_MANAGEMENT",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "clusterVoltage", "name": "电池簇电压", "unit": "0.1V", "default": 1000.0, "min": 0.0, "max": 1500.0},
+          {"key": "clusterCurrent", "name": "电池簇电流值", "unit": "0.1A", "default": 0.0, "min": -1600.0, "max": 1600.0},
+          {"key": "totalSOC", "name": "电池簇总SOC", "unit": "0.10%", "default": 50.0, "min": 0.0, "max": 100.0},
+          {"key": "totalSOH", "name": "电池簇总SOH", "unit": "1.00%", "default": 100.0, "min": 0.0, "max": 100.0},
+          {"key": "totalSOE", "name": "电池簇总SOE", "unit": "0.10%", "default": 50.0, "min": 0.0, "max": 100.0},
+          {"key": "insulationRP", "name": "电池簇绝缘电阻R+", "unit": "1kΩ", "default": 500.0, "min": 0.0, "max": 65535.0},
+          {"key": "insulationRN", "name": "电池簇绝缘电阻R-", "unit": "1kΩ", "default": 500.0, "min": 0.0, "max": 65535.0},
+          {"key": "batteryStatus", "name": "电池簇电池状态", "default": 0},
+          {"key": "tempCount", "name": "实际温度采集点数", "default": 0},
+          {"key": "maxTemp", "name": "电池最高温度", "unit": "0.1℃", "default": 250.0, "min": -400.0, "max": 1200.0},
+          {"key": "minTemp", "name": "电池最低温度", "unit": "0.1℃", "default": 250.0, "min": -400.0, "max": 1200.0},
+          {"key": "avgTemp", "name": "电池平均温度", "unit": "0.1℃", "default": 250.0, "min": -400.0, "max": 1200.0},
+          {"key": "cellCount", "name": "电池组电池总节数", "default": 480},
+          {"key": "avgCellVoltage", "name": "单体平均电压", "unit": "0.001V", "default": 3000, "min": 1000, "max": 4500},
+          {"key": "maxCellVoltage", "name": "最高单体电压", "unit": "0.001V", "default": 3000, "min": 1000, "max": 4500},
+          {"key": "minCellVoltage", "name": "最低单体电压", "unit": "0.001V", "default": 3000, "min": 1000, "max": 4500},
+          {"key": "avgSOC", "name": "单体平均SOC", "unit": "0.10%", "default": 500, "min": 0, "max": 1000},
+          {"key": "maxSOC", "name": "最高单体SOC", "unit": "0.10%", "default": 500, "min": 0, "max": 1000},
+          {"key": "minSOC", "name": "最低单体SOC", "unit": "0.10%", "default": 500, "min": 0, "max": 1000},
+          {"key": "avgSOH", "name": "单体平均SOH", "unit": "1.00%", "default": 10000, "min": 0, "max": 10000},
+          {"key": "maxSOH", "name": "最高单体SOH", "unit": "1.00%", "default": 10000, "min": 0, "max": 10000},
+          {"key": "minSOH", "name": "最低单体SOH", "unit": "1.00%", "default": 10000, "min": 0, "max": 10000},
+          {"key": "maxChargeCurrent", "name": "最大允许充电电流", "unit": "0.1A", "default": 500.0, "min": 0.0, "max": 1600.0},
+          {"key": "maxDischargeCurrent", "name": "最大允许放电电流", "unit": "0.1A", "default": 500.0, "min": 0.0, "max": 1600.0},
+          {"key": "maxChargePower", "name": "最大允许充电功率", "unit": "0.1kW", "default": 500.0, "min": 0.0, "max": 5000.0},
+          {"key": "maxDischargePower", "name": "最大允许放电功率", "unit": "0.1kW", "default": 500.0, "min": 0.0, "max": 5000.0},
+          {"key": "cumulativeChargeEnergy", "name": "累计充电电量", "unit": "0.1kWh", "default": 0.0},
+          {"key": "cumulativeDischargeEnergy", "name": "累计放电电量", "unit": "0.1kWh", "default": 0.0},
+          {"key": "chargeCount", "name": "累计充电次数", "default": 0},
+          {"key": "dischargeCount", "name": "累计放电次数", "default": 0}
+        ],
+        "telesignal": [
+          {"key": "insulationStatus", "name": "绝缘采集状态", "default": 0},
+          {"key": "heartbeat", "name": "系统运行心跳", "default": 0}
+        ],
+        "telecontrol": [
+          {"key": "reset", "name": "系统复位", "default": false}
+        ],
+        "teleadjust": []
+      }
+    },
+    {
+      "type": "AC_BUS",
+      "name": "交流母线",
+      "description": "交流电力系统的公共连接点",
+      "category": "BUS",
+      "communicationTypes": ["MODBUS_TCP"],
+      "properties": {
+        "telemetry": [
+          {"key": "voltage", "name": "母线电压", "unit": "0.1V", "default": 380.0, "min": 0.0, "max": 500.0},
+          {"key": "frequency", "name": "频率", "unit": "0.01Hz", "default": 5000, "min": 4500, "max": 5500},
+          {"key": "activePower", "name": "有功功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "reactivePower", "name": "无功功率", "unit": "0.1kVar", "default": 0.0},
+          {"key": "apparentPower", "name": "视在功率", "unit": "0.1kVA", "default": 0.0}
+        ],
+        "telesignal": [
+          {"key": "connected", "name": "连接状态", "default": true}
+        ],
+        "telecontrol": [],
+        "teleadjust": [
+          {"key": "voltageSet", "name": "电压设定", "unit": "0.1V", "default": 380.0, "min": 0.0, "max": 500.0},
+          {"key": "frequencySet", "name": "频率设定", "unit": "0.01Hz", "default": 5000, "min": 4500, "max": 5500}
+        ]
+      }
+    },
+    {
+      "type": "DC_BUS",
+      "name": "直流母线",
+      "description": "直流电力系统的公共连接点",
+      "category": "BUS",
+      "communicationTypes": ["MODBUS_TCP"],
+      "properties": {
+        "telemetry": [
+          {"key": "voltage", "name": "母线电压", "unit": "0.1V", "default": 800.0, "min": 0.0, "max": 2000.0},
+          {"key": "positiveVoltage", "name": "正母线电压", "unit": "0.1V", "default": 800.0, "min": 0.0, "max": 2000.0},
+          {"key": "negativeVoltage", "name": "负母线电压", "unit": "0.1V", "default": -800.0, "min": -2000.0, "max": 0.0},
+          {"key": "activePower", "name": "有功功率", "unit": "0.1kW", "default": 0.0}
+        ],
+        "telesignal": [
+          {"key": "connected", "name": "连接状态", "default": true}
+        ],
+        "telecontrol": [],
+        "teleadjust": [
+          {"key": "voltageSet", "name": "电压设定", "unit": "0.1V", "default": 800.0, "min": 0.0, "max": 2000.0}
+        ]
+      }
+    },
+    {
+      "type": "AC_LOAD",
+      "name": "交流负载",
+      "description": "交流电力系统中的用电设备",
+      "category": "LOAD",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "activePower", "name": "有功功率", "unit": "0.1kW", "default": 0.0, "min": 0.0, "max": 1000.0},
+          {"key": "reactivePower", "name": "无功功率", "unit": "0.1kVar", "default": 0.0, "min": -500.0, "max": 500.0},
+          {"key": "apparentPower", "name": "视在功率", "unit": "0.1kVA", "default": 0.0, "min": 0.0, "max": 1000.0},
+          {"key": "powerFactor", "name": "功率因数", "unit": "0.001", "default": 1000, "min": -1000, "max": 1000},
+          {"key": "voltage", "name": "电压", "unit": "0.1V", "default": 380.0},
+          {"key": "current", "name": "电流", "unit": "0.1A", "default": 0.0}
+        ],
+        "telesignal": [
+          {"key": "enabled", "name": "启用状态", "default": true}
+        ],
+        "telecontrol": [
+          {"key": "enable", "name": "启用/禁用", "default": true}
+        ],
+        "teleadjust": [
+          {"key": "activePowerSet", "name": "有功功率设定", "unit": "0.1kW", "default": 0.0, "min": 0.0, "max": 1000.0},
+          {"key": "reactivePowerSet", "name": "无功功率设定", "unit": "0.1kVar", "default": 0.0, "min": -500.0, "max": 500.0}
+        ]
+      }
+    },
+    {
+      "type": "DC_LOAD",
+      "name": "直流负载",
+      "description": "直流电力系统中的用电设备",
+      "category": "LOAD",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "activePower", "name": "有功功率", "unit": "0.1kW", "default": 0.0, "min": 0.0, "max": 1000.0},
+          {"key": "voltage", "name": "电压", "unit": "0.1V", "default": 800.0},
+          {"key": "current", "name": "电流", "unit": "0.1A", "default": 0.0, "min": 0.0, "max": 1000.0}
+        ],
+        "telesignal": [
+          {"key": "enabled", "name": "启用状态", "default": true}
+        ],
+        "telecontrol": [
+          {"key": "enable", "name": "启用/禁用", "default": true}
+        ],
+        "teleadjust": [
+          {"key": "activePowerSet", "name": "有功功率设定", "unit": "0.1kW", "default": 0.0, "min": 0.0, "max": 1000.0}
+        ]
+      }
+    },
+    {
+      "type": "METER_PREVENT_BACKFLOW",
+      "name": "防逆流电表",
+      "description": "用于防止电力逆流到电网的计量设备",
+      "category": "METER",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "instantPower", "name": "瞬时功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "forwardEnergy", "name": "累计正向电量", "unit": "1kWh", "default": 0.0},
+          {"key": "reverseEnergy", "name": "累计反向电量", "unit": "1kWh", "default": 0.0},
+          {"key": "voltage", "name": "电压", "unit": "0.1V", "default": 380.0},
+          {"key": "current", "name": "电流", "unit": "0.1A", "default": 0.0}
+        ],
+        "telesignal": [
+          {"key": "reversePower", "name": "逆功率状态", "default": false},
+          {"key": "alarm", "name": "告警状态", "default": false}
+        ],
+        "telecontrol": [],
+        "teleadjust": [
+          {"key": "powerLimit", "name": "功率限值", "unit": "0.1kW", "default": 0.0, "min": 0.0, "max": 5000.0}
+        ]
+      }
+    },
+    {
+      "type": "METER_MEASURING",
+      "name": "计量电表",
+      "description": "用于计量用电量的设备",
+      "category": "METER",
+      "communicationTypes": ["MODBUS_TCP", "MODBUS_RTU"],
+      "properties": {
+        "telemetry": [
+          {"key": "instantPower", "name": "瞬时功率", "unit": "0.1kW", "default": 0.0},
+          {"key": "forwardEnergy", "name": "累计正向电量", "unit": "1kWh", "default": 0.0},
+          {"key": "reverseEnergy", "name": "累计反向电量", "unit": "1kWh", "default": 0.0},
+          {"key": "voltage", "name": "电压", "unit": "0.1V", "default": 380.0},
+          {"key": "current", "name": "电流", "unit": "0.1A", "default": 0.0}
+        ],
+        "telesignal": [
+          {"key": "alarm", "name": "告警状态", "default": false}
+        ],
+        "telecontrol": [],
+        "teleadjust": []
+      }
+    }
+  ]
+}

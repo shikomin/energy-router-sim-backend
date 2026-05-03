@@ -1,0 +1,118 @@
+{
+  "devices": [
+    {
+      "id": "bus_ac",
+      "name": "交流母线",
+      "type": "BUS",
+      "ip": "192.168.1.100",
+      "port": 502,
+      "enabled": true,
+      "busType": "AC",
+      "voltageLevel": 0.4,
+      "ratedVoltage": 400,
+      "ratedCurrent": 1000
+    },
+    {
+      "id": "bus_dc",
+      "name": "直流母线",
+      "type": "BUS",
+      "ip": "192.168.1.101",
+      "port": 502,
+      "enabled": true,
+      "busType": "DC",
+      "voltageLevel": 0.8,
+      "ratedVoltage": 800,
+      "ratedCurrent": 500
+    },
+    {
+      "id": "pcs_01",
+      "name": "PCS(ACDC)",
+      "type": "PCS",
+      "ip": "192.168.1.102",
+      "port": 502,
+      "enabled": true,
+      "acVoltage": 400,
+      "dcVoltage": 800,
+      "ratedPower": 100,
+      "efficiency": 0.96
+    },
+    {
+      "id": "mppt_01",
+      "name": "MPPT(光伏)",
+      "type": "MPPT",
+      "ip": "192.168.1.103",
+      "port": 502,
+      "enabled": true,
+      "pvCount": 4,
+      "maxPowerPerPv": 25,
+      "hvVoltage": 800,
+      "lvVoltage": 1000
+    },
+    {
+      "id": "dcdc_01",
+      "name": "DCDC-1",
+      "type": "DCDC",
+      "ip": "192.168.1.104",
+      "port": 502,
+      "enabled": true,
+      "inputVoltage": 800,
+      "outputVoltage": 512,
+      "ratedPower": 50,
+      "efficiency": 0.97
+    },
+    {
+      "id": "dcdc_02",
+      "name": "DCDC-2",
+      "type": "DCDC",
+      "ip": "192.168.1.105",
+      "port": 502,
+      "enabled": true,
+      "inputVoltage": 512,
+      "outputVoltage": 48,
+      "ratedPower": 30,
+      "efficiency": 0.96
+    },
+    {
+      "id": "bms_01",
+      "name": "BMS(储能)",
+      "type": "BMS",
+      "ip": "192.168.1.106",
+      "port": 502,
+      "enabled": true,
+      "batteryCount": 16,
+      "nominalVoltage": 512,
+      "capacity": 100,
+      "initialSOC": 80
+    },
+    {
+      "id": "ac_load_01",
+      "name": "交流负载",
+      "type": "AC_LOAD",
+      "ip": "192.168.1.107",
+      "port": 502,
+      "enabled": true,
+      "ratedPower": 50,
+      "powerFactor": 0.85
+    },
+    {
+      "id": "dc_load_01",
+      "name": "直流负载",
+      "type": "DC_LOAD",
+      "ip": "192.168.1.108",
+      "port": 502,
+      "enabled": true,
+      "ratedPower": 30,
+      "voltage": 800
+    },
+    {
+      "id": "meter_01",
+      "name": "防逆流电表",
+      "type": "METER_PREVENT_BACKFLOW",
+      "ip": "192.168.1.109",
+      "port": 502,
+      "enabled": true,
+      "voltage": 400,
+      "currentRating": 100
+    }
+  ]
+}
