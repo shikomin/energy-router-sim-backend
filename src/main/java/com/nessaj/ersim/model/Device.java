@@ -1,7 +1,9 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Device {
     private String id;
     private String name;
@@ -11,6 +13,8 @@ public class Device {
     private String communicationType;
     private Integer slaveId;
     private Map<String, DeviceConnection> connections;
+    private Boolean enabled;
+    private Map<String, Object> properties;
 
     public Device() {}
 
@@ -30,4 +34,8 @@ public class Device {
     public void setSlaveId(Integer slaveId) { this.slaveId = slaveId; }
     public Map<String, DeviceConnection> getConnections() { return connections; }
     public void setConnections(Map<String, DeviceConnection> connections) { this.connections = connections; }
+    public Boolean getEnabled() { return enabled; }
+    public void setEnabled(Boolean enabled) { this.enabled = enabled; }
+    public Map<String, Object> getProperties() { return properties; }
+    public void setProperties(Map<String, Object> properties) { this.properties = properties; }
 }

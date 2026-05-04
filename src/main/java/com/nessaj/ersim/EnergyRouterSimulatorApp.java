@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @Auther 胥珂铭
@@ -13,11 +14,11 @@ import org.springframework.context.annotation.ComponentScan;
 @Slf4j
 @ComponentScan("com.nessaj")
 @SpringBootApplication
+@EnableScheduling
 public class EnergyRouterSimulatorApp {
 
     public static void main(String[] args) {
         log.info("#=====>> EnergyRouterSimulatorApp服务启动 <<=====#");
         SpringApplication.run(EnergyRouterSimulatorApp.class);
     }
-
 }

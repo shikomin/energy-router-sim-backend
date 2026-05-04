@@ -5,16 +5,26 @@
       "name": "标准微电网拓扑",
       "description": "包含交流母线、直流母线、PCS、MPPT、DCDC、BMS及负载的标准微电网拓扑结构",
       "deviceList": ["bus_ac", "bus_dc", "pcs_01", "mppt_01", "dcdc_01", "dcdc_02", "bms_01", "ac_load_01", "dc_load_01", "meter_01"],
-      "busConnections": [
-        {
-          "busId": "bus_ac",
+      "buses": {
+        "bus_ac": {
+          "id": "bus_ac",
+          "name": "交流母线",
+          "type": "AC_BUS",
+          "voltageLevel": 0,
+          "ratedVoltage": 0.4,
+          "ratedCurrent": 1000,
           "connectedDevices": ["pcs_01", "ac_load_01", "meter_01"]
         },
-        {
-          "busId": "bus_dc",
+        "bus_dc": {
+          "id": "bus_dc",
+          "name": "直流母线",
+          "type": "DC_BUS",
+          "voltageLevel": 0,
+          "ratedVoltage": 0.8,
+          "ratedCurrent": 500,
           "connectedDevices": ["pcs_01", "mppt_01", "dcdc_01", "dc_load_01"]
         }
-      ],
+      },
       "deviceConnections": [
         {
           "fromDeviceId": "meter_01",

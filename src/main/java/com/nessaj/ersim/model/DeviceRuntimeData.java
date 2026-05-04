@@ -1,8 +1,10 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashMap;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DeviceRuntimeData {
     private String deviceId;
     private Map<String, Object> telemetry;

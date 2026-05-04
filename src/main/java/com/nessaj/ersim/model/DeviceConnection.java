@@ -1,5 +1,8 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DeviceConnection {
     private String busId;
     private String port;

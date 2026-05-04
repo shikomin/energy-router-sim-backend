@@ -1,5 +1,8 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SimulatorConfig {
     private Integer stepIntervalMs;
     private Double timeScale;

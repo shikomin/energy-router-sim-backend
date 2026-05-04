@@ -1,8 +1,10 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Bus {
     private String id;
     private String name;

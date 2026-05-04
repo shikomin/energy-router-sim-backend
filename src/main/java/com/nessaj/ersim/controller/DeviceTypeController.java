@@ -21,7 +21,7 @@ public class DeviceTypeController {
 
     @GetMapping
     public ResponseEntity<ApiResponse<List<DeviceTypeDefinition>>> getAllDeviceTypes() {
-        List<DeviceTypeDefinition> deviceTypes = configLoader.getAllDeviceTypeDefinitions();
+        List<DeviceTypeDefinition> deviceTypes = configLoader.getAllDeviceTypes();
         return ResponseEntity.ok(ApiResponse.success(deviceTypes));
     }
 

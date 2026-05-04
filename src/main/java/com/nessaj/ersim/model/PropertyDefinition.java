@@ -1,11 +1,16 @@
 package com.nessaj.ersim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PropertyDefinition {
     private String key;
     private String name;
     private String unit;
+
+    @JsonProperty("default")
     private Object defaultValue;
     private Double min;
     private Double max;
@@ -26,6 +31,8 @@ public class PropertyDefinition {
     public String getUnit() { return unit; }
     public void setUnit(String unit) { this.unit = unit; }
     public Object getDefaultValue() { return defaultValue; }
+
+    @JsonProperty("default")
     public void setDefaultValue(Object defaultValue) { this.defaultValue = defaultValue; }
     public Double getMin() { return min; }
     public void setMin(Double min) { this.min = min; }

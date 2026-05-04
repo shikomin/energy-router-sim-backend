@@ -76,4 +76,46 @@ public class SimulationController {
         simulationControlService.updateSimulatorConfig(config);
         return ResponseEntity.ok(ApiResponse.success("Configuration updated successfully", config));
     }
+
+    @PostMapping("/pbat")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> setPbatControl(@RequestBody Map<String, Object> request) {
+        boolean manual = Boolean.TRUE.equals(request.get("manual"));
+        double setpoint = 0;
+        if (request.get("setpoint") != null) {
+            setpoint = ((Number) request.get("setpoint")).doubleValue();
+        }
+        simulationControlService.setPbatManualMode(manual, setpoint);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("pbatManualMode", simulationControlService.isPbatManualMode());
+        result.put("pbatManualSetpoint", simulationControlService.getPbatManualSetpoint());
+        return ResponseEntity.ok(ApiResponse.success("Pbat control updated", result));
+    }
+
+    @GetMapping("/pbat")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> getPbatControl() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("pbatManualMode", simulationControlService.isPbatManualMode());
+        result.put("pbatManualSetpoint", simulationControlService.getPbatManualSetpoint());
+        return ResponseEntity.ok(ApiResponse.success(result));
+    }
+
+    @PostMapping("/system-state")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> setSystemState(@RequestBody Map<String, String> request) {
+        String state = request.get("state");
+        simulationControlService.setSystemState(state);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("systemState", simulationControlService.getSystemState());
+        result.put("subState", simulationControlService.getCurrentSubState());
+        return ResponseEntity.ok(ApiResponse.success("System state changed to " + state, result));
+    }
+
+    @GetMapping("/system-state")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> getSystemState() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("systemState", simulationControlService.getSystemState());
+        result.put("subState", simulationControlService.getCurrentSubState());
+        return ResponseEntity.ok(ApiResponse.success(result));
+    }
 }
