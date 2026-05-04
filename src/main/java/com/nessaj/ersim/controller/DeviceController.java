@@ -2,6 +2,7 @@ package com.nessaj.ersim.controller;
 
 import com.nessaj.ersim.config.ConfigurationLoader;
 import com.nessaj.ersim.model.*;
+import com.nessaj.ersim.repository.DeviceRepository;
 import com.nessaj.ersim.service.RuntimeStateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,27 +15,27 @@ import java.util.UUID;
 @CrossOrigin(origins = "*")
 public class DeviceController {
 
+    private final DeviceRepository deviceRepository;
     private final ConfigurationLoader configLoader;
     private final RuntimeStateService runtimeStateService;
 
-    public DeviceController(ConfigurationLoader configLoader, RuntimeStateService runtimeStateService) {
+    public DeviceController(DeviceRepository deviceRepository, ConfigurationLoader configLoader, RuntimeStateService runtimeStateService) {
+        this.deviceRepository = deviceRepository;
         this.configLoader = configLoader;
         this.runtimeStateService = runtimeStateService;
     }
 
     @GetMapping
     public ResponseEntity<ApiResponse<List<Device>>> getAllDevices() {
-        List<Device> devices = configLoader.getAllDevices();
+        List<Device> devices = deviceRepository.findAll();
         return ResponseEntity.ok(ApiResponse.success(devices));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<Device>> getDevice(@PathVariable String id) {
-        Device device = configLoader.getDevice(id);
-        if (device == null) {
-            return ResponseEntity.badRequest().body(ApiResponse.error("Device not found: " + id));
-        }
-        return ResponseEntity.ok(ApiResponse.success(device));
+        return deviceRepository.findById(id)
+                .map(device -> ResponseEntity.ok(ApiResponse.success(device)))
+                .orElse(ResponseEntity.badRequest().body(ApiResponse.error("Device not found: " + id)));
     }
 
     @PostMapping
@@ -47,7 +48,7 @@ public class DeviceController {
             device.setId(UUID.randomUUID().toString());
         }
 
-        if (configLoader.getDevice(device.getId()) != null) {
+        if (deviceRepository.existsById(device.getId())) {
             return ResponseEntity.badRequest().body(ApiResponse.error("Device ID already exists: " + device.getId()));
         }
 
@@ -56,9 +57,9 @@ public class DeviceController {
             return ResponseEntity.badRequest().body(ApiResponse.error("Invalid device type: " + device.getType()));
         }
 
-        configLoader.addDevice(device);
-        runtimeStateService.addDeviceRuntimeData(device);
-        return ResponseEntity.ok(ApiResponse.success("Device created successfully", device));
+        Device savedDevice = deviceRepository.save(device);
+        runtimeStateService.addDeviceRuntimeData(savedDevice);
+        return ResponseEntity.ok(ApiResponse.success("Device created successfully", savedDevice));
     }
 
     @PutMapping("/{id}")
@@ -71,8 +72,7 @@ public class DeviceController {
             return ResponseEntity.badRequest().body(ApiResponse.error("Device ID mismatch"));
         }
 
-        Device existingDevice = configLoader.getDevice(id);
-        if (existingDevice == null) {
+        if (!deviceRepository.existsById(id)) {
             return ResponseEntity.badRequest().body(ApiResponse.error("Device not found: " + id));
         }
 
@@ -81,10 +81,10 @@ public class DeviceController {
             return ResponseEntity.badRequest().body(ApiResponse.error("Invalid device type: " + device.getType()));
         }
 
-        configLoader.updateDevice(device);
+        Device savedDevice = deviceRepository.save(device);
         runtimeStateService.removeDeviceRuntimeData(id);
-        runtimeStateService.addDeviceRuntimeData(device);
-        return ResponseEntity.ok(ApiResponse.success("Device updated successfully", device));
+        runtimeStateService.addDeviceRuntimeData(savedDevice);
+        return ResponseEntity.ok(ApiResponse.success("Device updated successfully", savedDevice));
     }
 
     @DeleteMapping("/{id}")
@@ -93,12 +93,11 @@ public class DeviceController {
             return ResponseEntity.badRequest().body(ApiResponse.error("Cannot delete device while simulation is running"));
         }
 
-        Device device = configLoader.getDevice(id);
-        if (device == null) {
+        if (!deviceRepository.existsById(id)) {
             return ResponseEntity.badRequest().body(ApiResponse.error("Device not found: " + id));
         }
 
-        configLoader.deleteDevice(id);
+        deviceRepository.deleteById(id);
         runtimeStateService.removeDeviceRuntimeData(id);
         return ResponseEntity.ok(ApiResponse.success("Device deleted successfully", null));
     }

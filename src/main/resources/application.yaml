@@ -1,6 +1,14 @@
 spring:
   application:
     name: energy-router-sim
+  datasource:
+    url: jdbc:sqlite:energy_router.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    database-platform: com.nessaj.ersim.config.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
 
 server:
   port: 36750

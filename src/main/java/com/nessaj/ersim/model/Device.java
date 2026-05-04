@@ -1,10 +1,13 @@
 package com.nessaj.ersim.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Map;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "devices")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Device {
+    @Id
     private String id;
     private String name;
     private String type;
@@ -12,9 +15,10 @@ public class Device {
     private Integer port;
     private String communicationType;
     private Integer slaveId;
-    private Map<String, DeviceConnection> connections;
+    private String deviceLocalNum;
     private Boolean enabled;
-    private Map<String, Object> properties;
+    @Column(name = "properties", columnDefinition = "TEXT")
+    private String properties;
 
     public Device() {}
 
@@ -32,10 +36,10 @@ public class Device {
     public void setCommunicationType(String communicationType) { this.communicationType = communicationType; }
     public Integer getSlaveId() { return slaveId; }
     public void setSlaveId(Integer slaveId) { this.slaveId = slaveId; }
-    public Map<String, DeviceConnection> getConnections() { return connections; }
-    public void setConnections(Map<String, DeviceConnection> connections) { this.connections = connections; }
+    public String getDeviceLocalNum() { return deviceLocalNum; }
+    public void setDeviceLocalNum(String deviceLocalNum) { this.deviceLocalNum = deviceLocalNum; }
     public Boolean getEnabled() { return enabled; }
     public void setEnabled(Boolean enabled) { this.enabled = enabled; }
-    public Map<String, Object> getProperties() { return properties; }
-    public void setProperties(Map<String, Object> properties) { this.properties = properties; }
+    public String getProperties() { return properties; }
+    public void setProperties(String properties) { this.properties = properties; }
 }

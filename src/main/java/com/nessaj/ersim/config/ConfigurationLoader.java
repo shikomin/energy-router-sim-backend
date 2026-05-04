@@ -1,8 +1,12 @@
 package com.nessaj.ersim.config;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.nessaj.ersim.model.*;
+import com.nessaj.ersim.repository.DeviceRepository;
+import com.nessaj.ersim.repository.PointRepository;
+import com.nessaj.ersim.repository.TopologyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,16 +22,27 @@ import java.util.stream.Collectors;
 @Component
 public class ConfigurationLoader {
 
+    private final DeviceRepository deviceRepository;
+    private final PointRepository pointRepository;
+    private final TopologyRepository topologyRepository;
+
     private final Map<String, Device> deviceMap;
     private final Map<String, DeviceTypeDefinition> deviceTypeMap;
     private final Map<String, Topology> topologyMap;
+    private final Map<String, Point> pointMap;
     private final ObjectMapper objectMapper;
     private final String configPath;
 
-    public ConfigurationLoader() {
+    public ConfigurationLoader(DeviceRepository deviceRepository,
+                               PointRepository pointRepository,
+                               TopologyRepository topologyRepository) {
+        this.deviceRepository = deviceRepository;
+        this.pointRepository = pointRepository;
+        this.topologyRepository = topologyRepository;
         this.deviceMap = new HashMap<>();
         this.deviceTypeMap = new HashMap<>();
         this.topologyMap = new HashMap<>();
+        this.pointMap = new HashMap<>();
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         this.configPath = System.getProperty("config.path", "src/main/resources/config");
@@ -36,9 +51,125 @@ public class ConfigurationLoader {
     @PostConstruct
     public void loadAllConfigurations() {
         loadDeviceTypes();
-        loadDevices();
-        loadTopologies();
+        importDevicesFromJson();
+        importTopologiesFromJson();
+        importPointsFromJson();
         initializeTopologyDevices();
+    }
+
+    private void importDevicesFromJson() {
+        if (deviceRepository.count() == 0) {
+            log.info("Device database is empty, importing from JSON...");
+            List<Device> devices = loadDevicesFromJson();
+            if (!devices.isEmpty()) {
+                deviceRepository.saveAll(devices);
+                log.info("Imported {} devices from JSON to database", devices.size());
+            }
+        } else {
+            log.info("Device database already has data, skipping JSON import");
+        }
+    }
+
+    private List<Device> loadDevicesFromJson() {
+        try {
+            File file = new File(configPath, "device.json");
+            if (!file.exists()) {
+                log.warn("Device configuration file not found, returning empty list");
+                return List.of();
+            }
+            DeviceWrapper wrapper = objectMapper.readValue(file, DeviceWrapper.class);
+            if (wrapper != null && wrapper.getDevices() != null) {
+                deviceMap.clear();
+                for (Device device : wrapper.getDevices()) {
+                    deviceMap.put(device.getId(), device);
+                }
+                return wrapper.getDevices();
+            }
+        } catch (IOException e) {
+            log.error("Failed to load devices configuration", e);
+        }
+        return List.of();
+    }
+
+    private void importTopologiesFromJson() {
+        if (topologyRepository.count() == 0) {
+            log.info("Topology database is empty, importing from JSON...");
+            List<Topology> topologies = loadTopologiesFromJson();
+            if (!topologies.isEmpty()) {
+                for (Topology topology : topologies) {
+                    serializeTopologyData(topology);
+                }
+                topologyRepository.saveAll(topologies);
+                log.info("Imported {} topologies from JSON to database", topologies.size());
+            }
+        } else {
+            log.info("Topology database already has data, skipping JSON import");
+        }
+    }
+
+    private void serializeTopologyData(Topology topology) {
+        try {
+            topology.setBusesJson(objectMapper.writeValueAsString(topology.getBuses()));
+            topology.setDevicesJson(objectMapper.writeValueAsString(topology.getDevices()));
+            topology.setDeviceListJson(objectMapper.writeValueAsString(topology.getDeviceList()));
+        } catch (JsonProcessingException e) {
+            log.error("Failed to serialize topology data for topology: {}", topology.getId(), e);
+        }
+    }
+
+    private List<Topology> loadTopologiesFromJson() {
+        try {
+            File file = new File(configPath, "topology.json");
+            if (!file.exists()) {
+                log.warn("Topology configuration file not found, returning empty list");
+                return List.of();
+            }
+            TopologyWrapper wrapper = objectMapper.readValue(file, TopologyWrapper.class);
+            if (wrapper != null && wrapper.getTopologies() != null) {
+                topologyMap.clear();
+                for (Topology topology : wrapper.getTopologies()) {
+                    topologyMap.put(topology.getId(), topology);
+                }
+                return wrapper.getTopologies();
+            }
+        } catch (IOException e) {
+            log.error("Failed to load topologies configuration", e);
+        }
+        return List.of();
+    }
+
+    private void importPointsFromJson() {
+        if (pointRepository.count() == 0) {
+            log.info("Point database is empty, importing from JSON...");
+            List<Point> points = loadPointsFromJson();
+            pointRepository.saveAll(points);
+            log.info("Imported {} points from JSON to database", points.size());
+        } else {
+            log.info("Point database already has data, skipping JSON import");
+        }
+    }
+
+    private List<Point> loadPointsFromJson() {
+        try {
+            File file = new File(configPath, "point.json");
+            if (!file.exists()) {
+                log.warn("Point configuration file not found, returning empty list");
+                return List.of();
+            }
+            PointWrapper wrapper = objectMapper.readValue(file, PointWrapper.class);
+            if (wrapper != null && wrapper.getPoints() != null) {
+                pointMap.clear();
+                for (Point point : wrapper.getPoints()) {
+                    String id = point.getPtId() + "_" + point.getSignalType() + "_" + point.getDeviceLocalNum();
+                    point.setId(id);
+                    pointMap.put(id, point);
+                }
+                return wrapper.getPoints();
+            }
+        } catch (IOException e) {
+            log.error("Failed to load points configuration", e);
+        }
+        return List.of();
     }
 
     private void initializeTopologyDevices() {
@@ -86,24 +217,8 @@ public class ConfigurationLoader {
         }
     }
 
-    public void loadTopologies() {
-        try {
-            File file = new File(configPath, "topology.json");
-            if (!file.exists()) {
-                TopologyWrapper wrapper = new TopologyWrapper();
-                objectMapper.writeValue(file, wrapper);
-                return;
-            }
-            TopologyWrapper wrapper = objectMapper.readValue(file, TopologyWrapper.class);
-            if (wrapper != null && wrapper.getTopologies() != null) {
-                topologyMap.clear();
-                for (Topology topology : wrapper.getTopologies()) {
-                    topologyMap.put(topology.getId(), topology);
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load topologies configuration", e);
-        }
+    public List<Point> loadPoints() {
+        return pointRepository.findAll();
     }
 
     public void saveDevices() {

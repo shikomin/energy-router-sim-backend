@@ -128,3 +128,8 @@ spring-boot-devtools.log
 tmp/
 temp/
 *.tmp
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3

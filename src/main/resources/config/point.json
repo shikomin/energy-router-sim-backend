@@ -1,0 +1,3235 @@
+{
+  "points": [
+    {
+      "id": "1_yc_12",
+      "ptId": "1",
+      "ptName": "额定功率",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "ratedPower"
+    },
+    {
+      "id": "3_yc_12",
+      "ptId": "3",
+      "ptName": "电池运行状态",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryStatus"
+    },
+    {
+      "id": "17_yc_12",
+      "ptId": "17",
+      "ptName": "电池功率",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryPower"
+    },
+    {
+      "id": "18_yc_12",
+      "ptId": "18",
+      "ptName": "电池电流",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryCurrent"
+    },
+    {
+      "id": "19_yc_12",
+      "ptId": "19",
+      "ptName": "电池电压",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryVoltage"
+    },
+    {
+      "id": "20_yc_12",
+      "ptId": "20",
+      "ptName": "高压侧电压",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "hvVoltage"
+    },
+    {
+      "id": "21_yc_12",
+      "ptId": "21",
+      "ptName": "模块温度",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "moduleTemp"
+    },
+    {
+      "id": "32_yc_12",
+      "ptId": "32",
+      "ptName": "低压侧设备接入类型",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yc_12",
+      "ptId": "44",
+      "ptName": "软件版本低字",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yc_12",
+      "ptId": "45",
+      "ptName": "软件版本高字",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yc_12",
+      "ptId": "46",
+      "ptName": "环境温度",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yc_12",
+      "ptId": "48",
+      "ptName": "通讯时间-年",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yc_12",
+      "ptId": "49",
+      "ptName": "通讯时间-月",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yc_12",
+      "ptId": "50",
+      "ptName": "通讯时间-日",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yc_12",
+      "ptId": "51",
+      "ptName": "通讯时间-时",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "52_yc_12",
+      "ptId": "52",
+      "ptName": "通讯时间-分",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "53_yc_12",
+      "ptId": "53",
+      "ptName": "通讯时间-秒",
+      "deviceLocalNum": "12",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yx_12",
+      "ptId": "1",
+      "ptName": "初始化",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "initializing"
+    },
+    {
+      "id": "2_yx_12",
+      "ptId": "2",
+      "ptName": "自检",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "selfCheck"
+    },
+    {
+      "id": "3_yx_12",
+      "ptId": "3",
+      "ptName": "准备运行",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "ready"
+    },
+    {
+      "id": "4_yx_12",
+      "ptId": "4",
+      "ptName": "运行",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "running"
+    },
+    {
+      "id": "5_yx_12",
+      "ptId": "5",
+      "ptName": "故障自动复位次数超限",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "17_yx_12",
+      "ptId": "17",
+      "ptName": "PV1输入过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "18_yx_12",
+      "ptId": "18",
+      "ptName": "PV2输入过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "19_yx_12",
+      "ptId": "19",
+      "ptName": "PV3输入过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "20_yx_12",
+      "ptId": "20",
+      "ptName": "PV4输入过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "21_yx_12",
+      "ptId": "21",
+      "ptName": "PV1输入过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "22_yx_12",
+      "ptId": "22",
+      "ptName": "PV2输入过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "23_yx_12",
+      "ptId": "23",
+      "ptName": "PV3输入过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "24_yx_12",
+      "ptId": "24",
+      "ptName": "PV4输入过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "25_yx_12",
+      "ptId": "25",
+      "ptName": "PV1输入欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "26_yx_12",
+      "ptId": "26",
+      "ptName": "PV2输入欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "27_yx_12",
+      "ptId": "27",
+      "ptName": "PV3输入欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "28_yx_12",
+      "ptId": "28",
+      "ptName": "PV4输入欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "29_yx_12",
+      "ptId": "29",
+      "ptName": "PV1反接",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "30_yx_12",
+      "ptId": "30",
+      "ptName": "PV2反接",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "31_yx_12",
+      "ptId": "31",
+      "ptName": "PV3反接",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "32_yx_12",
+      "ptId": "32",
+      "ptName": "PV4反接",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "33_yx_12",
+      "ptId": "33",
+      "ptName": "母线过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "34_yx_12",
+      "ptId": "34",
+      "ptName": "母线欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "35_yx_12",
+      "ptId": "35",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "36_yx_12",
+      "ptId": "36",
+      "ptName": "预充电超时",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "37_yx_12",
+      "ptId": "37",
+      "ptName": "绝缘阻抗检测失效",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "38_yx_12",
+      "ptId": "38",
+      "ptName": "散热风扇故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "39_yx_12",
+      "ptId": "39",
+      "ptName": "低压侧1硬件过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "40_yx_12",
+      "ptId": "40",
+      "ptName": "低压侧2硬件过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "41_yx_12",
+      "ptId": "41",
+      "ptName": "低压侧3硬件过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "42_yx_12",
+      "ptId": "42",
+      "ptName": "低压侧4硬件过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "43_yx_12",
+      "ptId": "43",
+      "ptName": "高压侧逐波限流超限",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yx_12",
+      "ptId": "44",
+      "ptName": "主机故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yx_12",
+      "ptId": "45",
+      "ptName": "从机故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yx_12",
+      "ptId": "46",
+      "ptName": "主从通讯版本错误",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "47_yx_12",
+      "ptId": "47",
+      "ptName": "紧急停机故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yx_12",
+      "ptId": "48",
+      "ptName": "其它故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yx_12",
+      "ptId": "49",
+      "ptName": "电池电流过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yx_12",
+      "ptId": "50",
+      "ptName": "电池过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yx_12",
+      "ptId": "51",
+      "ptName": "电池欠压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "52_yx_12",
+      "ptId": "52",
+      "ptName": "高压侧反接",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "65_yx_12",
+      "ptId": "65",
+      "ptName": "低压侧1硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "66_yx_12",
+      "ptId": "66",
+      "ptName": "低压侧2硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "67_yx_12",
+      "ptId": "67",
+      "ptName": "低压侧3硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "68_yx_12",
+      "ptId": "68",
+      "ptName": "低压侧4硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "69_yx_12",
+      "ptId": "69",
+      "ptName": "辅助电源故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "70_yx_12",
+      "ptId": "70",
+      "ptName": "模块过温",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "71_yx_12",
+      "ptId": "71",
+      "ptName": "环境温度低",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "72_yx_12",
+      "ptId": "72",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "73_yx_12",
+      "ptId": "73",
+      "ptName": "母线硬件过压",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "74_yx_12",
+      "ptId": "74",
+      "ptName": "EMS通讯故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "75_yx_12",
+      "ptId": "75",
+      "ptName": "低压侧1逐波限流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "76_yx_12",
+      "ptId": "76",
+      "ptName": "低压侧2逐波限流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "77_yx_12",
+      "ptId": "77",
+      "ptName": "低压侧3逐波限流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "78_yx_12",
+      "ptId": "78",
+      "ptName": "低压侧4逐波限流",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "79_yx_12",
+      "ptId": "79",
+      "ptName": "主从通讯故障",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "80_yx_12",
+      "ptId": "80",
+      "ptName": "环境温度高",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "81_yx_12",
+      "ptId": "81",
+      "ptName": "PV1短路",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "82_yx_12",
+      "ptId": "82",
+      "ptName": "PV2短路",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "83_yx_12",
+      "ptId": "83",
+      "ptName": "PV3短路",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "84_yx_12",
+      "ptId": "84",
+      "ptName": "PV4短路",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "85_yx_12",
+      "ptId": "85",
+      "ptName": "AD零漂过大",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "86_yx_12",
+      "ptId": "86",
+      "ptName": "高压侧未上电",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "87_yx_12",
+      "ptId": "87",
+      "ptName": "功率环输出限幅",
+      "deviceLocalNum": "12",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yc_1",
+      "ptId": "1",
+      "ptName": "额定功率",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "ratedPower"
+    },
+    {
+      "id": "3_yc_1",
+      "ptId": "3",
+      "ptName": "电池运行状态",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryStatus"
+    },
+    {
+      "id": "17_yc_1",
+      "ptId": "17",
+      "ptName": "电池功率",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryPower"
+    },
+    {
+      "id": "18_yc_1",
+      "ptId": "18",
+      "ptName": "电池电流",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryCurrent"
+    },
+    {
+      "id": "19_yc_1",
+      "ptId": "19",
+      "ptName": "电池电压",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryVoltage"
+    },
+    {
+      "id": "20_yc_1",
+      "ptId": "20",
+      "ptName": "高压侧电压",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "hvVoltage"
+    },
+    {
+      "id": "21_yc_1",
+      "ptId": "21",
+      "ptName": "模块温度",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "moduleTemp"
+    },
+    {
+      "id": "32_yc_1",
+      "ptId": "32",
+      "ptName": "低压侧设备接入类型",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yc_1",
+      "ptId": "44",
+      "ptName": "软件版本低字",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yc_1",
+      "ptId": "45",
+      "ptName": "软件版本高字",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yc_1",
+      "ptId": "46",
+      "ptName": "环境温度",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yc_1",
+      "ptId": "48",
+      "ptName": "通讯时间-年",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yc_1",
+      "ptId": "49",
+      "ptName": "通讯时间-月",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yc_1",
+      "ptId": "50",
+      "ptName": "通讯时间-日",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yc_1",
+      "ptId": "51",
+      "ptName": "通讯时间-时",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "52_yc_1",
+      "ptId": "52",
+      "ptName": "通讯时间-分",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "53_yc_1",
+      "ptId": "53",
+      "ptName": "通讯时间-秒",
+      "deviceLocalNum": "1",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yx_1",
+      "ptId": "1",
+      "ptName": "初始化",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "initializing"
+    },
+    {
+      "id": "2_yx_1",
+      "ptId": "2",
+      "ptName": "自检",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "selfCheck"
+    },
+    {
+      "id": "3_yx_1",
+      "ptId": "3",
+      "ptName": "准备运行",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "ready"
+    },
+    {
+      "id": "4_yx_1",
+      "ptId": "4",
+      "ptName": "运行",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "running"
+    },
+    {
+      "id": "5_yx_1",
+      "ptId": "5",
+      "ptName": "故障自动复位次数超限",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "17_yx_1",
+      "ptId": "17",
+      "ptName": "PV1输入过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "18_yx_1",
+      "ptId": "18",
+      "ptName": "PV2输入过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "19_yx_1",
+      "ptId": "19",
+      "ptName": "PV3输入过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "20_yx_1",
+      "ptId": "20",
+      "ptName": "PV4输入过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "21_yx_1",
+      "ptId": "21",
+      "ptName": "PV1输入过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "22_yx_1",
+      "ptId": "22",
+      "ptName": "PV2输入过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "23_yx_1",
+      "ptId": "23",
+      "ptName": "PV3输入过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "24_yx_1",
+      "ptId": "24",
+      "ptName": "PV4输入过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "25_yx_1",
+      "ptId": "25",
+      "ptName": "PV1输入欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "26_yx_1",
+      "ptId": "26",
+      "ptName": "PV2输入欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "27_yx_1",
+      "ptId": "27",
+      "ptName": "PV3输入欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "28_yx_1",
+      "ptId": "28",
+      "ptName": "PV4输入欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "29_yx_1",
+      "ptId": "29",
+      "ptName": "PV1反接",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "30_yx_1",
+      "ptId": "30",
+      "ptName": "PV2反接",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "31_yx_1",
+      "ptId": "31",
+      "ptName": "PV3反接",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "32_yx_1",
+      "ptId": "32",
+      "ptName": "PV4反接",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "33_yx_1",
+      "ptId": "33",
+      "ptName": "母线过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "34_yx_1",
+      "ptId": "34",
+      "ptName": "母线欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "35_yx_1",
+      "ptId": "35",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "36_yx_1",
+      "ptId": "36",
+      "ptName": "预充电超时",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "37_yx_1",
+      "ptId": "37",
+      "ptName": "绝缘阻抗检测失效",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "38_yx_1",
+      "ptId": "38",
+      "ptName": "散热风扇故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "39_yx_1",
+      "ptId": "39",
+      "ptName": "低压侧1硬件过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "40_yx_1",
+      "ptId": "40",
+      "ptName": "低压侧2硬件过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "41_yx_1",
+      "ptId": "41",
+      "ptName": "低压侧3硬件过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "42_yx_1",
+      "ptId": "42",
+      "ptName": "低压侧4硬件过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "43_yx_1",
+      "ptId": "43",
+      "ptName": "高压侧逐波限流超限",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yx_1",
+      "ptId": "44",
+      "ptName": "主机故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yx_1",
+      "ptId": "45",
+      "ptName": "从机故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yx_1",
+      "ptId": "46",
+      "ptName": "主从通讯版本错误",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "47_yx_1",
+      "ptId": "47",
+      "ptName": "紧急停机故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yx_1",
+      "ptId": "48",
+      "ptName": "其它故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yx_1",
+      "ptId": "49",
+      "ptName": "电池电流过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yx_1",
+      "ptId": "50",
+      "ptName": "电池过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yx_1",
+      "ptId": "51",
+      "ptName": "电池欠压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "52_yx_1",
+      "ptId": "52",
+      "ptName": "高压侧反接",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "65_yx_1",
+      "ptId": "65",
+      "ptName": "低压侧1硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "66_yx_1",
+      "ptId": "66",
+      "ptName": "低压侧2硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "67_yx_1",
+      "ptId": "67",
+      "ptName": "低压侧3硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "68_yx_1",
+      "ptId": "68",
+      "ptName": "低压侧4硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "69_yx_1",
+      "ptId": "69",
+      "ptName": "辅助电源故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "70_yx_1",
+      "ptId": "70",
+      "ptName": "模块过温",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "71_yx_1",
+      "ptId": "71",
+      "ptName": "环境温度低",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "72_yx_1",
+      "ptId": "72",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "73_yx_1",
+      "ptId": "73",
+      "ptName": "母线硬件过压",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "74_yx_1",
+      "ptId": "74",
+      "ptName": "EMS通讯故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "75_yx_1",
+      "ptId": "75",
+      "ptName": "低压侧1逐波限流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "76_yx_1",
+      "ptId": "76",
+      "ptName": "低压侧2逐波限流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "77_yx_1",
+      "ptId": "77",
+      "ptName": "低压侧3逐波限流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "78_yx_1",
+      "ptId": "78",
+      "ptName": "低压侧4逐波限流",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "79_yx_1",
+      "ptId": "79",
+      "ptName": "主从通讯故障",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "80_yx_1",
+      "ptId": "80",
+      "ptName": "环境温度高",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "81_yx_1",
+      "ptId": "81",
+      "ptName": "PV1短路",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "82_yx_1",
+      "ptId": "82",
+      "ptName": "PV2短路",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "83_yx_1",
+      "ptId": "83",
+      "ptName": "PV3短路",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "84_yx_1",
+      "ptId": "84",
+      "ptName": "PV4短路",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "85_yx_1",
+      "ptId": "85",
+      "ptName": "AD零漂过大",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "86_yx_1",
+      "ptId": "86",
+      "ptName": "高压侧未上电",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "87_yx_1",
+      "ptId": "87",
+      "ptName": "功率环输出限幅",
+      "deviceLocalNum": "1",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yc_13",
+      "ptId": "1",
+      "ptName": "额定功率",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "ratedPower"
+    },
+    {
+      "id": "2_yc_13",
+      "ptId": "2",
+      "ptName": "PV总运行状态",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "9_yc_13",
+      "ptId": "9",
+      "ptName": "PV1运行状态",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "10_yc_13",
+      "ptId": "10",
+      "ptName": "PV2运行状态",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "11_yc_13",
+      "ptId": "11",
+      "ptName": "PV3运行状态",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "12_yc_13",
+      "ptId": "12",
+      "ptName": "PV4运行状态",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "13_yc_13",
+      "ptId": "13",
+      "ptName": "PV1输入功率",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv1Power"
+    },
+    {
+      "id": "14_yc_13",
+      "ptId": "14",
+      "ptName": "PV2输入功率",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv2Power"
+    },
+    {
+      "id": "15_yc_13",
+      "ptId": "15",
+      "ptName": "PV3输入功率",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv3Power"
+    },
+    {
+      "id": "16_yc_13",
+      "ptId": "16",
+      "ptName": "PV4输入功率",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv4Power"
+    },
+    {
+      "id": "17_yc_13",
+      "ptId": "17",
+      "ptName": "PV1输入电压",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv1Voltage"
+    },
+    {
+      "id": "18_yc_13",
+      "ptId": "18",
+      "ptName": "PV2输入电压",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv2Voltage"
+    },
+    {
+      "id": "19_yc_13",
+      "ptId": "19",
+      "ptName": "PV3输入电压",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv3Voltage"
+    },
+    {
+      "id": "20_yc_13",
+      "ptId": "20",
+      "ptName": "PV4输入电压",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv4Voltage"
+    },
+    {
+      "id": "21_yc_13",
+      "ptId": "21",
+      "ptName": "PV1输入电流",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv1Current"
+    },
+    {
+      "id": "22_yc_13",
+      "ptId": "22",
+      "ptName": "PV2输入电流",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv2Current"
+    },
+    {
+      "id": "23_yc_13",
+      "ptId": "23",
+      "ptName": "PV3输入电流",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv3Current"
+    },
+    {
+      "id": "24_yc_13",
+      "ptId": "24",
+      "ptName": "PV4输入电流",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "pv4Current"
+    },
+    {
+      "id": "25_yc_13",
+      "ptId": "25",
+      "ptName": "高压侧电压",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "hvVoltage"
+    },
+    {
+      "id": "26_yc_13",
+      "ptId": "26",
+      "ptName": "模块温度",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "moduleTemp"
+    },
+    {
+      "id": "27_yc_13",
+      "ptId": "27",
+      "ptName": "PV总发电量低位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "28_yc_13",
+      "ptId": "28",
+      "ptName": "PV总发电量高位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "29_yc_13",
+      "ptId": "29",
+      "ptName": "PV1发电量低位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "30_yc_13",
+      "ptId": "30",
+      "ptName": "PV1发电量高位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "31_yc_13",
+      "ptId": "31",
+      "ptName": "PV2发电量低位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "32_yc_13",
+      "ptId": "32",
+      "ptName": "PV2发电量高位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "33_yc_13",
+      "ptId": "33",
+      "ptName": "PV3发电量低位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "34_yc_13",
+      "ptId": "34",
+      "ptName": "PV3发电量高位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "35_yc_13",
+      "ptId": "35",
+      "ptName": "PV4发电量低位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "36_yc_13",
+      "ptId": "36",
+      "ptName": "PV4发电量高位",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "37_yc_13",
+      "ptId": "37",
+      "ptName": "低压侧设备接入类型",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "38_yc_13",
+      "ptId": "38",
+      "ptName": "软件版本低字",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "39_yc_13",
+      "ptId": "39",
+      "ptName": "软件版本高字",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "40_yc_13",
+      "ptId": "40",
+      "ptName": "环境温度",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "41_yc_13",
+      "ptId": "41",
+      "ptName": "通讯时间-年",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "42_yc_13",
+      "ptId": "42",
+      "ptName": "通讯时间-月",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "43_yc_13",
+      "ptId": "43",
+      "ptName": "通讯时间-日",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yc_13",
+      "ptId": "44",
+      "ptName": "通讯时间-时",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yc_13",
+      "ptId": "45",
+      "ptName": "通讯时间-分",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yc_13",
+      "ptId": "46",
+      "ptName": "通讯时间-秒",
+      "deviceLocalNum": "13",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yx_13",
+      "ptId": "1",
+      "ptName": "初始化",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "initializing"
+    },
+    {
+      "id": "2_yx_13",
+      "ptId": "2",
+      "ptName": "自检",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "selfCheck"
+    },
+    {
+      "id": "3_yx_13",
+      "ptId": "3",
+      "ptName": "准备运行",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "ready"
+    },
+    {
+      "id": "4_yx_13",
+      "ptId": "4",
+      "ptName": "运行",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "running"
+    },
+    {
+      "id": "5_yx_13",
+      "ptId": "5",
+      "ptName": "故障自动复位次数超限",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": "faultResetLimit"
+    },
+    {
+      "id": "17_yx_13",
+      "ptId": "17",
+      "ptName": "PV1输入过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "18_yx_13",
+      "ptId": "18",
+      "ptName": "PV2输入过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "19_yx_13",
+      "ptId": "19",
+      "ptName": "PV3输入过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "20_yx_13",
+      "ptId": "20",
+      "ptName": "PV4输入过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "21_yx_13",
+      "ptId": "21",
+      "ptName": "PV1输入过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "22_yx_13",
+      "ptId": "22",
+      "ptName": "PV2输入过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "23_yx_13",
+      "ptId": "23",
+      "ptName": "PV3输入过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "24_yx_13",
+      "ptId": "24",
+      "ptName": "PV4输入过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "25_yx_13",
+      "ptId": "25",
+      "ptName": "PV1输入欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "26_yx_13",
+      "ptId": "26",
+      "ptName": "PV2输入欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "27_yx_13",
+      "ptId": "27",
+      "ptName": "PV3输入欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "28_yx_13",
+      "ptId": "28",
+      "ptName": "PV4输入欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "29_yx_13",
+      "ptId": "29",
+      "ptName": "PV1反接",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "30_yx_13",
+      "ptId": "30",
+      "ptName": "PV2反接",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "31_yx_13",
+      "ptId": "31",
+      "ptName": "PV3反接",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "32_yx_13",
+      "ptId": "32",
+      "ptName": "PV4反接",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "33_yx_13",
+      "ptId": "33",
+      "ptName": "母线过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "34_yx_13",
+      "ptId": "34",
+      "ptName": "母线欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "35_yx_13",
+      "ptId": "35",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "36_yx_13",
+      "ptId": "36",
+      "ptName": "预充电超时",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "37_yx_13",
+      "ptId": "37",
+      "ptName": "绝缘阻抗检测失效",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "38_yx_13",
+      "ptId": "38",
+      "ptName": "散热风扇故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "39_yx_13",
+      "ptId": "39",
+      "ptName": "低压侧1硬件过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "40_yx_13",
+      "ptId": "40",
+      "ptName": "低压侧2硬件过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "41_yx_13",
+      "ptId": "41",
+      "ptName": "低压侧3硬件过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "42_yx_13",
+      "ptId": "42",
+      "ptName": "低压侧4硬件过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "43_yx_13",
+      "ptId": "43",
+      "ptName": "高压侧逐波限流超限",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yx_13",
+      "ptId": "44",
+      "ptName": "主机故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yx_13",
+      "ptId": "45",
+      "ptName": "从机故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yx_13",
+      "ptId": "46",
+      "ptName": "主从通讯版本错误",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "47_yx_13",
+      "ptId": "47",
+      "ptName": "紧急停机故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yx_13",
+      "ptId": "48",
+      "ptName": "其它故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yx_13",
+      "ptId": "49",
+      "ptName": "电池电流过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yx_13",
+      "ptId": "50",
+      "ptName": "电池过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yx_13",
+      "ptId": "51",
+      "ptName": "电池欠压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "52_yx_13",
+      "ptId": "52",
+      "ptName": "高压侧反接",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "65_yx_13",
+      "ptId": "65",
+      "ptName": "低压侧1硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "66_yx_13",
+      "ptId": "66",
+      "ptName": "低压侧2硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "67_yx_13",
+      "ptId": "67",
+      "ptName": "低压侧3硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "68_yx_13",
+      "ptId": "68",
+      "ptName": "低压侧4硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "69_yx_13",
+      "ptId": "69",
+      "ptName": "辅助电源故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "70_yx_13",
+      "ptId": "70",
+      "ptName": "模块过温",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "71_yx_13",
+      "ptId": "71",
+      "ptName": "环境温度低",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "72_yx_13",
+      "ptId": "72",
+      "ptName": "高压侧硬件过流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "73_yx_13",
+      "ptId": "73",
+      "ptName": "母线硬件过压",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "74_yx_13",
+      "ptId": "74",
+      "ptName": "EMS通讯故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "75_yx_13",
+      "ptId": "75",
+      "ptName": "低压侧1逐波限流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "76_yx_13",
+      "ptId": "76",
+      "ptName": "低压侧2逐波限流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "77_yx_13",
+      "ptId": "77",
+      "ptName": "低压侧3逐波限流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "78_yx_13",
+      "ptId": "78",
+      "ptName": "低压侧4逐波限流",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "79_yx_13",
+      "ptId": "79",
+      "ptName": "主从通讯故障",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "80_yx_13",
+      "ptId": "80",
+      "ptName": "环境温度高",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "81_yx_13",
+      "ptId": "81",
+      "ptName": "PV1短路",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "82_yx_13",
+      "ptId": "82",
+      "ptName": "PV2短路",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "83_yx_13",
+      "ptId": "83",
+      "ptName": "PV3短路",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "84_yx_13",
+      "ptId": "84",
+      "ptName": "PV4短路",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "85_yx_13",
+      "ptId": "85",
+      "ptName": "AD零漂过大",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "86_yx_13",
+      "ptId": "86",
+      "ptName": "高压侧未上电",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "87_yx_13",
+      "ptId": "87",
+      "ptName": "功率环输出限幅",
+      "deviceLocalNum": "13",
+      "signalType": "yx",
+      "modelType": 2,
+      "linkedProp": ""
+    },
+    {
+      "id": "1_yc_19",
+      "ptId": "1",
+      "ptName": "交流AB线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageAB"
+    },
+    {
+      "id": "2_yc_19",
+      "ptId": "2",
+      "ptName": "交流BC线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageBC"
+    },
+    {
+      "id": "3_yc_19",
+      "ptId": "3",
+      "ptName": "交流CA线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageCA"
+    },
+    {
+      "id": "4_yc_19",
+      "ptId": "4",
+      "ptName": "交流A相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageA"
+    },
+    {
+      "id": "5_yc_19",
+      "ptId": "5",
+      "ptName": "交流B相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageB"
+    },
+    {
+      "id": "6_yc_19",
+      "ptId": "6",
+      "ptName": "交流C相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acVoltageC"
+    },
+    {
+      "id": "7_yc_19",
+      "ptId": "7",
+      "ptName": "交流A相电流",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acCurrentA"
+    },
+    {
+      "id": "8_yc_19",
+      "ptId": "8",
+      "ptName": "交流B相电流",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acCurrentB"
+    },
+    {
+      "id": "9_yc_19",
+      "ptId": "9",
+      "ptName": "交流C相电流",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acCurrentC"
+    },
+    {
+      "id": "10_yc_19",
+      "ptId": "10",
+      "ptName": "交流频率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "acFrequency"
+    },
+    {
+      "id": "11_yc_19",
+      "ptId": "11",
+      "ptName": "视在功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "apparentPower"
+    },
+    {
+      "id": "12_yc_19",
+      "ptId": "12",
+      "ptName": "有功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "activePower"
+    },
+    {
+      "id": "13_yc_19",
+      "ptId": "13",
+      "ptName": "无功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "reactivePower"
+    },
+    {
+      "id": "14_yc_19",
+      "ptId": "14",
+      "ptName": "功率因数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "powerFactor"
+    },
+    {
+      "id": "15_yc_19",
+      "ptId": "15",
+      "ptName": "日放电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "16_yc_19",
+      "ptId": "16",
+      "ptName": "日充电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "17_yc_19",
+      "ptId": "17",
+      "ptName": "累计放电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "18_yc_19",
+      "ptId": "18",
+      "ptName": "累计充电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "19_yc_19",
+      "ptId": "19",
+      "ptName": "电网开关前AB线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "20_yc_19",
+      "ptId": "20",
+      "ptName": "电网开关前BC线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "21_yc_19",
+      "ptId": "21",
+      "ptName": "电网开关前CA线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "22_yc_19",
+      "ptId": "22",
+      "ptName": "电网A相对N电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "23_yc_19",
+      "ptId": "23",
+      "ptName": "电网A相对PE电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "24_yc_19",
+      "ptId": "24",
+      "ptName": "直流功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "dcPower"
+    },
+    {
+      "id": "25_yc_19",
+      "ptId": "25",
+      "ptName": "总母线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "totalBusVoltage"
+    },
+    {
+      "id": "26_yc_19",
+      "ptId": "26",
+      "ptName": "正母线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "positiveBusVoltage"
+    },
+    {
+      "id": "27_yc_19",
+      "ptId": "27",
+      "ptName": "负母线电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "negativeBusVoltage"
+    },
+    {
+      "id": "28_yc_19",
+      "ptId": "28",
+      "ptName": "电池电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryVoltage"
+    },
+    {
+      "id": "29_yc_19",
+      "ptId": "29",
+      "ptName": "电池电流",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "batteryCurrent"
+    },
+    {
+      "id": "30_yc_19",
+      "ptId": "30",
+      "ptName": "A相IGBT温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "igbtTempA"
+    },
+    {
+      "id": "31_yc_19",
+      "ptId": "31",
+      "ptName": "B相IGBT温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "igbtTempB"
+    },
+    {
+      "id": "32_yc_19",
+      "ptId": "32",
+      "ptName": "C相IGBT温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "igbtTempC"
+    },
+    {
+      "id": "33_yc_19",
+      "ptId": "33",
+      "ptName": "环境温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "envTemp"
+    },
+    {
+      "id": "34_yc_19",
+      "ptId": "34",
+      "ptName": "A相铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "35_yc_19",
+      "ptId": "35",
+      "ptName": "B相铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "36_yc_19",
+      "ptId": "36",
+      "ptName": "C相铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "37_yc_19",
+      "ptId": "37",
+      "ptName": "N相铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "38_yc_19",
+      "ptId": "38",
+      "ptName": "BAT+铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "39_yc_19",
+      "ptId": "39",
+      "ptName": "BAT-铜排温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "40_yc_19",
+      "ptId": "40",
+      "ptName": "DSP发布软件版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "41_yc_19",
+      "ptId": "41",
+      "ptName": "DSP过程软件版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "42_yc_19",
+      "ptId": "42",
+      "ptName": "FPGA发布软件版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "43_yc_19",
+      "ptId": "43",
+      "ptName": "FPGA过程软件版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "44_yc_19",
+      "ptId": "44",
+      "ptName": "主功率板硬件版本号",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "45_yc_19",
+      "ptId": "45",
+      "ptName": "控制板硬件版本号",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "46_yc_19",
+      "ptId": "46",
+      "ptName": "DSP编译日期",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "47_yc_19",
+      "ptId": "47",
+      "ptName": "漏电流自检值",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "48_yc_19",
+      "ptId": "48",
+      "ptName": "逆变A相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "49_yc_19",
+      "ptId": "49",
+      "ptName": "逆变B相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "50_yc_19",
+      "ptId": "50",
+      "ptName": "逆变C相电压",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "51_yc_19",
+      "ptId": "51",
+      "ptName": "降额系数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "deratingFactor"
+    },
+    {
+      "id": "52_yc_19",
+      "ptId": "52",
+      "ptName": "事件记录-总条数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "53_yc_19",
+      "ptId": "53",
+      "ptName": "绝缘阻抗检测值",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "54_yc_19",
+      "ptId": "54",
+      "ptName": "平衡板温度",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "55_yc_19",
+      "ptId": "55",
+      "ptName": "漏电流检测值",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "56_yc_19",
+      "ptId": "56",
+      "ptName": "直流侧日放电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "57_yc_19",
+      "ptId": "57",
+      "ptName": "直流侧日充电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "58_yc_19",
+      "ptId": "58",
+      "ptName": "直流侧累计放电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "59_yc_19",
+      "ptId": "59",
+      "ptName": "直流侧累计充电量",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "60_yc_19",
+      "ptId": "60",
+      "ptName": "内部风扇转速设定值",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "61_yc_19",
+      "ptId": "61",
+      "ptName": "最新一条事件记录条数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "62_yc_19",
+      "ptId": "62",
+      "ptName": "DSPBootLoade软件发布版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "63_yc_19",
+      "ptId": "63",
+      "ptName": "DSPBootLoade软件过程版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "64_yc_19",
+      "ptId": "64",
+      "ptName": "电网锁相锁幅OK",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "65_yc_19",
+      "ptId": "65",
+      "ptName": "内部风扇1转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "66_yc_19",
+      "ptId": "66",
+      "ptName": "内部风扇2转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "67_yc_19",
+      "ptId": "67",
+      "ptName": "交流A相功率因数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "powerFactor"
+    },
+    {
+      "id": "68_yc_19",
+      "ptId": "68",
+      "ptName": "交流B相功率因数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "powerFactor"
+    },
+    {
+      "id": "69_yc_19",
+      "ptId": "69",
+      "ptName": "交流C相功率因数",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "powerFactor"
+    },
+    {
+      "id": "70_yc_19",
+      "ptId": "70",
+      "ptName": "交流A相有功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "activePower"
+    },
+    {
+      "id": "71_yc_19",
+      "ptId": "71",
+      "ptName": "交流B相有功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "activePower"
+    },
+    {
+      "id": "72_yc_19",
+      "ptId": "72",
+      "ptName": "交流C相有功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "activePower"
+    },
+    {
+      "id": "73_yc_19",
+      "ptId": "73",
+      "ptName": "交流A相无功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "reactivePower"
+    },
+    {
+      "id": "74_yc_19",
+      "ptId": "74",
+      "ptName": "交流B相无功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "reactivePower"
+    },
+    {
+      "id": "75_yc_19",
+      "ptId": "75",
+      "ptName": "交流C相无功功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "reactivePower"
+    },
+    {
+      "id": "76_yc_19",
+      "ptId": "76",
+      "ptName": "交流A相视在功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "apparentPower"
+    },
+    {
+      "id": "77_yc_19",
+      "ptId": "77",
+      "ptName": "交流B相视在功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "apparentPower"
+    },
+    {
+      "id": "78_yc_19",
+      "ptId": "78",
+      "ptName": "交流C相视在功率",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": "apparentPower"
+    },
+    {
+      "id": "79_yc_19",
+      "ptId": "79",
+      "ptName": "外部风机1转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "80_yc_19",
+      "ptId": "80",
+      "ptName": "外部风机2转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "81_yc_19",
+      "ptId": "81",
+      "ptName": "外部风机3转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "82_yc_19",
+      "ptId": "82",
+      "ptName": "外部风机4转速",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "83_yc_19",
+      "ptId": "83",
+      "ptName": "通信故障字",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "84_yc_19",
+      "ptId": "84",
+      "ptName": "通信板软件发布版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "85_yc_19",
+      "ptId": "85",
+      "ptName": "通信板软件过程版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "86_yc_19",
+      "ptId": "86",
+      "ptName": "MCUBootLoade软件发布版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "87_yc_19",
+      "ptId": "87",
+      "ptName": "MCUBootLoade软件过程版本",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "88_yc_19",
+      "ptId": "88",
+      "ptName": "当前电网相序",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "89_yc_19",
+      "ptId": "89",
+      "ptName": "状态机工作状态",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "90_yc_19",
+      "ptId": "90",
+      "ptName": "当前实际充放电工作模式",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "91_yc_19",
+      "ptId": "91",
+      "ptName": "锁相异常故障",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "92_yc_19",
+      "ptId": "92",
+      "ptName": "直流辅源下电指令",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    },
+    {
+      "id": "93_yc_19",
+      "ptId": "93",
+      "ptName": "故障灯标志",
+      "deviceLocalNum": "19",
+      "signalType": "yc",
+      "modelType": 1,
+      "linkedProp": ""
+    }
+  ]
+}

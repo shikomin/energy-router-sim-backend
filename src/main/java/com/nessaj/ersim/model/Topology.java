@@ -1,18 +1,37 @@
 package com.nessaj.ersim.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Entity
+@Table(name = "topologies")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Topology {
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Id
     private String id;
     private String name;
     private String description;
+    @Column(name = "buses_json", columnDefinition = "TEXT")
+    private String busesJson;
+    @Column(name = "devices_json", columnDefinition = "TEXT")
+    private String devicesJson;
+    @Column(name = "device_list_json", columnDefinition = "TEXT")
+    private String deviceListJson;
+
+    @Transient
     private Map<String, Bus> buses;
+    @Transient
     private Map<String, Device> devices;
+    @Transient
     private List<String> deviceList;
 
     public Topology() {
@@ -29,12 +48,44 @@ public class Topology {
         this.deviceList = new ArrayList<>();
     }
 
+    @PostLoad
+    private void deserializeFields() {
+        if (busesJson != null && !busesJson.isEmpty()) {
+            try {
+                this.buses = objectMapper.readValue(busesJson, new TypeReference<Map<String, Bus>>() {});
+            } catch (JsonProcessingException e) {
+                this.buses = new HashMap<>();
+            }
+        }
+        if (devicesJson != null && !devicesJson.isEmpty()) {
+            try {
+                this.devices = objectMapper.readValue(devicesJson, new TypeReference<Map<String, Device>>() {});
+            } catch (JsonProcessingException e) {
+                this.devices = new HashMap<>();
+            }
+        }
+        if (deviceListJson != null && !deviceListJson.isEmpty()) {
+            try {
+                this.deviceList = objectMapper.readValue(deviceListJson, new TypeReference<List<String>>() {});
+            } catch (JsonProcessingException e) {
+                this.deviceList = new ArrayList<>();
+            }
+        }
+    }
+
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    public String getBusesJson() { return busesJson; }
+    public void setBusesJson(String busesJson) { this.busesJson = busesJson; }
+    public String getDevicesJson() { return devicesJson; }
+    public void setDevicesJson(String devicesJson) { this.devicesJson = devicesJson; }
+    public String getDeviceListJson() { return deviceListJson; }
+    public void setDeviceListJson(String deviceListJson) { this.deviceListJson = deviceListJson; }
+
     public Map<String, Bus> getBuses() { return buses; }
     public void setBuses(Map<String, Bus> buses) { this.buses = buses; }
     public Map<String, Device> getDevices() { return devices; }
