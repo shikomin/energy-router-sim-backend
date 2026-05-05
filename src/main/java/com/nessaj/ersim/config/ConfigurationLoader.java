@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,6 +69,16 @@ public class ConfigurationLoader {
         } else {
             log.info("Device database already has data, skipping JSON import");
         }
+        loadDevicesFromDatabase();
+    }
+
+    private void loadDevicesFromDatabase() {
+        List<Device> devices = deviceRepository.findAll();
+        deviceMap.clear();
+        for (Device device : devices) {
+            deviceMap.put(device.getId(), device);
+        }
+        log.info("Loaded {} devices from database into memory", deviceMap.size());
     }
 
     private List<Device> loadDevicesFromJson() {
@@ -105,6 +116,16 @@ public class ConfigurationLoader {
         } else {
             log.info("Topology database already has data, skipping JSON import");
         }
+        loadTopologiesFromDatabase();
+    }
+
+    private void loadTopologiesFromDatabase() {
+        List<Topology> topologies = topologyRepository.findAll();
+        topologyMap.clear();
+        for (Topology topology : topologies) {
+            topologyMap.put(topology.getId(), topology);
+        }
+        log.info("Loaded {} topologies from database into memory", topologyMap.size());
     }
 
     private void serializeTopologyData(Topology topology) {
@@ -147,6 +168,16 @@ public class ConfigurationLoader {
         } else {
             log.info("Point database already has data, skipping JSON import");
         }
+        loadPointsFromDatabase();
+    }
+
+    private void loadPointsFromDatabase() {
+        List<Point> points = pointRepository.findAll();
+        pointMap.clear();
+        for (Point point : points) {
+            pointMap.put(point.getId(), point);
+        }
+        log.info("Loaded {} points from database into memory", pointMap.size());
     }
 
     private List<Point> loadPointsFromJson() {
@@ -219,6 +250,14 @@ public class ConfigurationLoader {
 
     public List<Point> loadPoints() {
         return pointRepository.findAll();
+    }
+
+    public List<Point> getAllPoints() {
+        return new ArrayList<>(pointMap.values());
+    }
+
+    public Map<String, Point> getPointMap() {
+        return new HashMap<>(pointMap);
     }
 
     public void saveDevices() {

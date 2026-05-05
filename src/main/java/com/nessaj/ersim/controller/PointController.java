@@ -1,11 +1,15 @@
 package com.nessaj.ersim.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nessaj.ersim.model.Point;
 import com.nessaj.ersim.repository.PointRepository;
+import com.nessaj.ersim.service.MqttPublisherService;
+import com.nessaj.ersim.service.RuntimeStateService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -14,9 +18,16 @@ import java.util.Optional;
 public class PointController {
 
     private final PointRepository pointRepository;
+    private final MqttPublisherService mqttPublisherService;
+    private final RuntimeStateService runtimeStateService;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public PointController(PointRepository pointRepository) {
+    public PointController(PointRepository pointRepository,
+                          MqttPublisherService mqttPublisherService,
+                          RuntimeStateService runtimeStateService) {
         this.pointRepository = pointRepository;
+        this.mqttPublisherService = mqttPublisherService;
+        this.runtimeStateService = runtimeStateService;
     }
 
     @GetMapping
@@ -117,6 +128,40 @@ public class PointController {
                 .distinct()
                 .toList();
         return ResponseEntity.ok(devices);
+    }
+
+    @PostMapping("/send")
+    public ResponseEntity<?> sendPointValue(@RequestBody Map<String, Object> payload) {
+        Point point = objectMapper.convertValue(payload.get("point"), Point.class);
+        String value = (String) payload.get("value");
+
+        if (point == null) {
+            return ResponseEntity.badRequest().body(Map.of("error", "点位信息不能为空"));
+        }
+        if (value == null || value.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "发送值不能为空"));
+        }
+
+        String signalType = point.getSignalType();
+        if (!"yc".equals(signalType) && !"yx".equals(signalType)) {
+            return ResponseEntity.badRequest().body(Map.of("error", "只支持遥测(yc)和遥信(yx)类型的点位发送"));
+        }
+
+        String deviceId = runtimeStateService.getDeviceIdByLocalNum(point.getDeviceLocalNum());
+        if (deviceId == null) {
+            deviceId = point.getDeviceLocalNum();
+        }
+
+        mqttPublisherService.publishManualPointData(
+                deviceId,
+                point.getPtId(),
+                signalType,
+                point.getLinkedProp(),
+                value.trim(),
+                null
+        );
+
+        return ResponseEntity.ok(Map.of("success", true, "message", "发送成功"));
     }
 
     private boolean isValidSignalType(String signalType) {

@@ -2,6 +2,7 @@ package com.nessaj.ersim.engine;
 
 import com.nessaj.ersim.config.ConfigurationLoader;
 import com.nessaj.ersim.model.*;
+import com.nessaj.ersim.service.MqttPublisherService;
 import com.nessaj.ersim.service.RuntimeStateService;
 import com.nessaj.ersim.service.WebSocketPublisherService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,10 @@ public class PowerSimulationEngine {
     private final ConfigurationLoader configLoader;
     private final RuntimeStateService runtimeStateService;
     private final WebSocketPublisherService publisherService;
+    private final MqttPublisherService mqttPublisherService;
+    private List<Point> cachedPoints = new ArrayList<>();
+    private long lastPointCacheTime = 0;
+    private static final long POINT_CACHE_INTERVAL_MS = 5000;
 
     private SystemState systemState = SystemState.GRID_CONNECTED;
     private String currentSubState = "STANDBY";
@@ -35,17 +40,17 @@ public class PowerSimulationEngine {
     private double ppv = 0;
     private double pdcL = 0;
     private double pacL = 0;
-    private double soc = 30;
+    private double soc = 50;
     private double pbatSet = 0;
     private double ppcs = 0;
     private double pbatActual = 0;
     private double vdc = 750;
     private double gridPower = 0;
 
-    private double batteryCapacity = 261;
+    private double batteryCapacity = 1000;
     private double maxBatPower = 125;
-    private double minSoc = 20;
-    private double maxSoc = 90;
+    private double minSoc = 30;
+    private double maxSoc = 95;
 
     private boolean pbatManualMode = false;
     private double pbatManualSetpoint = 0;
@@ -56,10 +61,12 @@ public class PowerSimulationEngine {
     private String weatherCondition = "CLEAR";
 
     public PowerSimulationEngine(ConfigurationLoader configLoader, RuntimeStateService runtimeStateService,
-                                 WebSocketPublisherService publisherService) {
+                                 WebSocketPublisherService publisherService,
+                                 MqttPublisherService mqttPublisherService) {
         this.configLoader = configLoader;
         this.runtimeStateService = runtimeStateService;
         this.publisherService = publisherService;
+        this.mqttPublisherService = mqttPublisherService;
     }
 
     @PostConstruct
@@ -75,7 +82,7 @@ public class PowerSimulationEngine {
 
         if (!initialized) {
             vdc = 750;
-            soc = 30;
+            soc = 50;
             initialized = true;
             log.info("PowerSimulationEngine simulation state initialized - Vdc: {}V, SOC: {}%", vdc, soc);
         }
@@ -153,9 +160,9 @@ public class PowerSimulationEngine {
         } else {
             boolean pvLarge = ppv > 35;
             boolean pvSmall = ppv < 10;
-            boolean socNormal = soc >= 25 && soc <= 85;
-            boolean socLow = soc < 25;
-            boolean socFull = soc >= 90;
+            boolean socNormal = soc >= minSoc && soc <= maxSoc;
+            boolean socLow = soc < minSoc;
+            boolean socFull = soc >= maxSoc;
             boolean dcHeavy = pdcL > 50;
             boolean dcMedium = pdcL > 20 && pdcL <= 50;
 
@@ -164,7 +171,7 @@ public class PowerSimulationEngine {
             if (excessPower > 0 && !socFull) {
                 currentSubState = "PV_EXCESS_TO_BAT";
                 double chargePower = Math.min(excessPower, maxBatPower * 0.8);
-                double targetSoc = 90;
+                double targetSoc = maxSoc;
                 if (soc + chargePower * 0.1 > targetSoc) {
                     chargePower = (targetSoc - soc) * 10;
                 }
@@ -187,7 +194,7 @@ public class PowerSimulationEngine {
             } else if (ppv < 5 && socLow && dcHeavy) {
                 currentSubState = "BAT_CHARGING";
                 pbatSet = -maxBatPower * 0.3;
-            } else if (ppv > 15 && ppv < 35 && soc < 90 && dcMedium) {
+            } else if (ppv > 15 && ppv < 35 && soc < maxSoc && dcMedium) {
                 currentSubState = "BAT_NOT_FULL_CHARGING";
                 pbatSet = -(ppv - pdcL) * 0.3;
                 pbatSet = clamp(pbatSet, -maxBatPower, 0);
@@ -215,7 +222,7 @@ public class PowerSimulationEngine {
         boolean pvActive = solarElevation > 0.1;
         boolean pvLarge = irradiance > 600;
         boolean pvSmall = irradiance < 200;
-        boolean socSufficient = soc > 25;
+        boolean socSufficient = soc > minSoc;
         boolean loadHeavy = (pdcL + pacL) > 60;
         boolean loadLight = (pdcL + pacL) < 30;
 
@@ -223,7 +230,7 @@ public class PowerSimulationEngine {
             currentSubState = "MANUAL_SET";
             pbatSet = pbatManualSetpoint;
             pbatSet = clampBySoc(pbatSet);
-        } else if (pvLarge && soc < 85 && loadLight) {
+        } else if (pvLarge && soc < maxSoc && loadLight) {
             currentSubState = "PV_MORE_BAT_CHARGE";
             pbatSet = -(maxBatPower * 0.4);
             vdc = clamp(vdc + 2, 700, 800);
@@ -287,6 +294,7 @@ public class PowerSimulationEngine {
     }
 
     private void updateDeviceRuntimeData() {
+        log.trace("updateDeviceRuntimeData called");
         updateMpptData();
         updateBmsData();
         updateDcdcData();
@@ -510,9 +518,11 @@ public class PowerSimulationEngine {
 
     private void publishRuntimeUpdates() {
         Map<String, DeviceRuntimeData> allRuntimeData = runtimeStateService.getAllRuntimeData();
+        log.debug("Publishing runtime updates, device count: {}", allRuntimeData.size());
 
         Map<String, Object> deviceUpdates = new HashMap<>();
         for (Map.Entry<String, DeviceRuntimeData> entry : allRuntimeData.entrySet()) {
+            log.trace("Publishing device {}: telemetry={}", entry.getKey(), entry.getValue().getTelemetry());
             deviceUpdates.put(entry.getKey(), entry.getValue().toMap());
         }
 
@@ -537,6 +547,27 @@ public class PowerSimulationEngine {
         updateMessage.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
 
         publisherService.publishDeviceUpdate(updateMessage);
+        publisherService.publishSimulationUpdate(Map.of(
+                "simulationTime", simulationTime,
+                "systemState", systemState.name(),
+                "subState", currentSubState,
+                "weather", Map.of(
+                        "condition", weatherCondition,
+                        "irradiance", irradiance,
+                        "cloudCover", cloudCover,
+                        "ambientTemp", ambientTemp
+                ),
+                "inputs", Map.of("ppv", ppv, "pdcL", pdcL, "pacL", pacL, "soc", soc),
+                "outputs", Map.of("pbatSet", pbatSet, "ppcs", ppcs, "pbatActual", pbatActual, "vdc", vdc, "gridPower", gridPower),
+                "timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+        ));
+
+        long now = System.currentTimeMillis();
+        if (cachedPoints.isEmpty() || now - lastPointCacheTime > POINT_CACHE_INTERVAL_MS) {
+            cachedPoints = configLoader.getAllPoints();
+            lastPointCacheTime = now;
+        }
+        mqttPublisherService.publishSimulationData(allRuntimeData, cachedPoints);
     }
 
     public void setSystemState(SystemState state) {

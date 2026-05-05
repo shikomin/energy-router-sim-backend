@@ -12,3 +12,13 @@ spring:
 
 server:
   port: 36750
+
+mqtt:
+  host: 124.221.130.19
+  port: 1883
+  username: admin
+  password: Nessaj@123
+  client-id: energy-router-sim
+  publish-topic: /energy-router/platform/receive
+  subscribe-topic: /energy-router/platform/send
+  station-id: 1001

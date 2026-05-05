@@ -69,4 +69,9 @@ public class SQLiteDialect extends Dialect {
     public boolean supportsCascadeDelete() {
         return false;
     }
+
+    @Override
+    public String getAddColumnString() {
+        return "add column";
+    }
 }

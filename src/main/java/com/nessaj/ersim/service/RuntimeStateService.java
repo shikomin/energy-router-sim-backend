@@ -2,30 +2,45 @@ package com.nessaj.ersim.service;
 
 import com.nessaj.ersim.config.ConfigurationLoader;
 import com.nessaj.ersim.model.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @Service
 public class RuntimeStateService {
 
     private final ConfigurationLoader configLoader;
     private final Map<String, DeviceRuntimeData> runtimeDataMap;
+    private final Map<String, String> localNumToDeviceIdMap;
     private volatile boolean simulationRunning = false;
 
     public RuntimeStateService(ConfigurationLoader configLoader) {
         this.configLoader = configLoader;
         this.runtimeDataMap = new ConcurrentHashMap<>();
+        this.localNumToDeviceIdMap = new ConcurrentHashMap<>();
     }
 
     public void initializeRuntimeData() {
         runtimeDataMap.clear();
+        localNumToDeviceIdMap.clear();
         List<Device> devices = configLoader.getAllDevices();
+        log.info("Initializing runtime data for {} devices", devices.size());
         for (Device device : devices) {
+            log.debug("Creating runtime data for device: {} (type: {})", device.getId(), device.getType());
             DeviceRuntimeData runtimeData = createRuntimeData(device);
             runtimeDataMap.put(device.getId(), runtimeData);
+            if (device.getDeviceLocalNum() != null && !device.getDeviceLocalNum().isEmpty()) {
+                localNumToDeviceIdMap.put(device.getDeviceLocalNum(), device.getId());
+            }
         }
+        log.info("Runtime data initialized with {} devices", runtimeDataMap.size());
+    }
+
+    public String getDeviceIdByLocalNum(String localNum) {
+        return localNumToDeviceIdMap.get(localNum);
     }
 
     private DeviceRuntimeData createRuntimeData(Device device) {
