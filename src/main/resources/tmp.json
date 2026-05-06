@@ -1,0 +1,19 @@
+{
+  "device_data": [
+    {
+      "device_id": "pcs_01",
+      "data_objects": [
+        {
+          "real_value": "2",
+          "data_id": "1"
+        }
+      ]
+    }
+  ],
+  "datatype": 2,
+  "station_id": 1001,
+  "station_data": {
+    "type": "yc"
+  },
+  "timestamp": 1778049707625
+}

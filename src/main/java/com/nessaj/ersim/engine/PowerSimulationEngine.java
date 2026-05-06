@@ -40,7 +40,7 @@ public class PowerSimulationEngine {
     private double ppv = 0;
     private double pdcL = 0;
     private double pacL = 0;
-    private double soc = 50;
+    private double soc = 86;
     private double pbatSet = 0;
     private double ppcs = 0;
     private double pbatActual = 0;
@@ -48,7 +48,7 @@ public class PowerSimulationEngine {
     private double gridPower = 0;
 
     private double batteryCapacity = 1000;
-    private double maxBatPower = 125;
+    private double maxBatPower = 10;
     private double minSoc = 30;
     private double maxSoc = 95;
 
@@ -77,12 +77,17 @@ public class PowerSimulationEngine {
         log.info("PowerSimulationEngine initialized - current server time: {}, simulation time starts at: {} seconds", now, this.simulationTime);
     }
 
+    /**
+     * 每一帧 模拟逻辑处理
+     *
+     * @param deltaTimeSeconds
+     */
     public void simulateStep(double deltaTimeSeconds) {
         simulationTime += deltaTimeSeconds;
 
         if (!initialized) {
             vdc = 750;
-            soc = 50;
+            soc = 86;
             initialized = true;
             log.info("PowerSimulationEngine simulation state initialized - Vdc: {}V, SOC: {}%", vdc, soc);
         }
@@ -153,6 +158,8 @@ public class PowerSimulationEngine {
     }
 
     private void calculateGridConnectedState() {
+        // 在 calculateGridConnectedState() 方法开头添加
+        double hour = (simulationTime % 86400) / 3600.0;
         if (pbatManualMode) {
             currentSubState = "MANUAL_SET";
             pbatSet = pbatManualSetpoint;
@@ -168,7 +175,25 @@ public class PowerSimulationEngine {
 
             double excessPower = ppv - pdcL;
 
-            if (excessPower > 0 && !socFull) {
+            // ========== 新增你的逻辑 ==========
+            boolean isDaytime = hour >= 6 && hour <= 18;
+            boolean isNight = !isDaytime;
+            boolean pvInsufficient = ppv < pdcL;  // 光伏不够
+            boolean socHigh = soc > 80;            // SOC > 80%
+            boolean socAboveMin = soc > 20;        // SOC > 20%
+
+            // 白天：光伏不够且SOC>80% → BMS放电
+            if (isDaytime && pvInsufficient && socHigh) {
+                currentSubState = "DAY_PV_INSUFFICIENT_BAT_DISCHARGE";
+                pbatSet = Math.min(pdcL - ppv, maxBatPower * 0.8);  // 放电补充差额
+                pbatSet = clamp(pbatSet, 0, maxBatPower);
+            }
+            // 晚上：SOC>20% → BMS放电
+            else if (isNight && pvInsufficient && socAboveMin) {
+                currentSubState = "NIGHT_BAT_DISCHARGE";
+                pbatSet = Math.min(pdcL + pacL - ppv, maxBatPower * 0.6);
+                pbatSet = clamp(pbatSet, 0, maxBatPower);
+            } else if (excessPower > 0 && !socFull) {
                 currentSubState = "PV_EXCESS_TO_BAT";
                 double chargePower = Math.min(excessPower, maxBatPower * 0.8);
                 double targetSoc = maxSoc;
@@ -285,7 +310,7 @@ public class PowerSimulationEngine {
         double hoursElapsed = deltaTimeSeconds / 3.6;
         double deltaSoc = -(pbatActual / batteryCapacity) * hoursElapsed * 100;
         soc = clamp(soc + deltaSoc, 5, 100);
-        soc = Math.round(soc * 10) / 10.0;
+        soc = Math.round(soc * 100) / 100.0;
 
         log.debug("Outputs - Pbat_set: {}kW, Ppcs: {}kW, Pbat_actual: {}kW, Vdc: {}V, Grid: {}kW, SOC: {}%",
                 String.format("%.2f", pbatSet), String.format("%.2f", ppcs),

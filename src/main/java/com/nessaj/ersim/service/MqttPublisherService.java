@@ -58,7 +58,7 @@ public class MqttPublisherService {
     private final RuntimeStateService runtimeStateService;
 
     public MqttPublisherService(MqttProperties mqttProperties, ObjectMapper objectMapper,
-                               @Autowired(required = false) RuntimeStateService runtimeStateService) {
+                                @Autowired(required = false) RuntimeStateService runtimeStateService) {
         this.mqttProperties = mqttProperties;
         this.objectMapper = objectMapper;
         this.runtimeStateService = runtimeStateService;
@@ -240,7 +240,7 @@ public class MqttPublisherService {
     }
 
     public void publishPointData(String ptId, String signalType, String deviceLocalNum,
-                                String linkedProp, Object value, String unit) {
+                                 String linkedProp, Object value, String unit) {
         PointData pointData = new PointData();
         pointData.setPtId(ptId);
         pointData.setSignalType(signalType);
@@ -258,7 +258,7 @@ public class MqttPublisherService {
     }
 
     public void publishManualPointData(String deviceId, String ptId, String signalType,
-                                     String linkedProp, String value, String unit) {
+                                       String linkedProp, String value, String unit) {
         long timestamp = Instant.now().toEpochMilli();
         Map<String, Object> message = buildBaseMessage(timestamp, signalType);
 
@@ -270,7 +270,8 @@ public class MqttPublisherService {
         dataObj.put("real_value", value);
 
         deviceData.put("data_objects", List.of(dataObj));
-        message.put("device_data", List.of(deviceData));
+        Map<String, Object> stationData = (Map<String, Object>) message.get("station_data");
+        stationData.put("device_data", List.of(deviceData));
 
         try {
             String payload = objectMapper.writeValueAsString(message);
@@ -283,7 +284,7 @@ public class MqttPublisherService {
     }
 
     public void publishDeviceData(String deviceId, String deviceName, String deviceType,
-                                 Map<String, Object> properties) {
+                                  Map<String, Object> properties) {
         DeviceData deviceData = new DeviceData();
         deviceData.setDeviceId(deviceId);
         deviceData.setDeviceName(deviceName);
@@ -315,9 +316,9 @@ public class MqttPublisherService {
             connect();
             return;
         }
-
         try {
             publishInternal(topic, payload);
+            log.info("发布点位数据:{}", payload);
         } catch (MqttException e) {
             log.error("Failed to publish to topic {}, queueing for retry: {}", topic, e.getMessage());
             messageQueue.offer(payload);
@@ -363,7 +364,7 @@ public class MqttPublisherService {
     }
 
     public Map<String, Object> buildPointMessage(String ptId, String signalType, String deviceLocalNum,
-                                                  String linkedProp, Object value, String unit) {
+                                                 String linkedProp, Object value, String unit) {
         Map<String, Object> msg = new HashMap<>();
         msg.put("ptId", ptId);
         msg.put("signalType", signalType);
@@ -454,7 +455,7 @@ public class MqttPublisherService {
     }
 
     private void publishYcData(long timestamp, Map<String, List<Point>> pointsByDevice,
-                              Map<String, DeviceRuntimeData> runtimeDataMap) {
+                               Map<String, DeviceRuntimeData> runtimeDataMap) {
         Map<String, Object> ycMessage = buildBaseMessage(timestamp, "yc");
 
         List<Map<String, Object>> deviceDataList = new ArrayList<>();
@@ -497,7 +498,7 @@ public class MqttPublisherService {
     }
 
     private void publishYxData(long timestamp, Map<String, List<Point>> pointsByDevice,
-                              Map<String, DeviceRuntimeData> runtimeDataMap) {
+                               Map<String, DeviceRuntimeData> runtimeDataMap) {
         Map<String, Object> yxMessage = buildBaseMessage(timestamp, "yx");
 
         List<Map<String, Object>> deviceDataList = new ArrayList<>();
@@ -543,7 +544,7 @@ public class MqttPublisherService {
         Map<String, Object> message = new HashMap<>();
         message.put("station_id", mqttProperties.getStationId());
         message.put("datatype", 2);
-        message.put("timestamp", timestamp);
+        message.put("timestamp", timestamp / 1000);
 
         Map<String, Object> stationData = new HashMap<>();
         stationData.put("type", type);

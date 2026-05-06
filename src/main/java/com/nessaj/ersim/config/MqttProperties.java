@@ -15,5 +15,5 @@ public class MqttProperties {
     private String clientId;
     private String publishTopic;
     private String subscribeTopic;
-    private long stationId;
+    private String stationId;
 }
