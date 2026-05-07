@@ -161,7 +161,7 @@ public class PowerSimulationEngine {
 
     private void calculateGridConnectedState() {
         // 在 calculateGridConnectedState() 方法开头添加
-        double hour = (simulationTime % 86400) / 3600.0;
+        double hour = (secondsOfDay % 86400) / 3600.0;
         if (pbatManualMode) {
             currentSubState = "MANUAL_SET";
             pbatSet = pbatManualSetpoint;
