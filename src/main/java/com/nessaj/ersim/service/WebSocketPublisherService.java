@@ -25,6 +25,7 @@ public class WebSocketPublisherService {
     public static final String TOPIC_SIMULATION = "/topic/simulation";
     public static final String TOPIC_TOPOLOGY = "/topic/topology";
     public static final String TOPIC_SYSTEM = "/topic/system";
+    public static final String TOPIC_MQTT_STATE = "/topic/mqtt_state";
 
     /**
      * 发布设备状态更新（广播给所有订阅者）
@@ -70,6 +71,15 @@ public class WebSocketPublisherService {
         WebSocketMessage<Object> message = WebSocketMessage.systemEvent(TOPIC_SYSTEM, data);
         messagingTemplate.convertAndSend(TOPIC_SYSTEM, message);
         log.debug("Published system event to topic: {}", TOPIC_SYSTEM);
+    }
+
+    /**
+     * 发布MQTT状态更新
+     */
+    public void publishMqttState(Object data) {
+        WebSocketMessage<Object> message = WebSocketMessage.systemEvent(TOPIC_MQTT_STATE, data);
+        messagingTemplate.convertAndSend(TOPIC_MQTT_STATE, message);
+        log.debug("Published MQTT state to topic: {}", TOPIC_MQTT_STATE);
     }
 
     /**

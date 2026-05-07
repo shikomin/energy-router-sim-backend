@@ -1,19 +1,334 @@
 {
-  "device_data": [
-    {
-      "device_id": "pcs_01",
-      "data_objects": [
-        {
-          "real_value": "2",
-          "data_id": "1"
+  "type": "DEVICE_UPDATE",
+  "topic": "/topic/devices",
+  "data": {
+    "outputs": {
+      "pbatSet": -10.958860057130092,
+      "vdc": 750.0,
+      "gridPower": -0.0,
+      "pbatActual": -10.958860057130092,
+      "ppcs": 0.0
+    },
+    "pbatManualSetpoint": 0.0,
+    "devices": {
+      "bus_ac": {
+        "telesignal": {},
+        "telecontrol": {},
+        "telemetry": {
+          "current": 27.34384309301003,
+          "voltage": 380,
+          "activePower": 17.996623770095482
+        },
+        "deviceId": "bus_ac",
+        "teleadjust": {}
+      },
+      "ac_load_01": {
+        "telesignal": {
+          "enabled": 1
+        },
+        "telecontrol": {
+          "enable": true
+        },
+        "telemetry": {
+          "current": 27.34384309301003,
+          "reactivePower": 5.398987131028645,
+          "apparentPower": 19.796286147105032,
+          "activePower": 17.996623770095482,
+          "powerFactor": 0.9,
+          "voltage": 380.14798627186593
+        },
+        "deviceId": "ac_load_01",
+        "teleadjust": {
+          "reactivePowerSet": 0.0,
+          "activePowerSet": 0.0
         }
-      ]
-    }
-  ],
-  "datatype": 2,
-  "station_id": 1001,
-  "station_data": {
-    "type": "yc"
+      },
+      "pcs_01": {
+        "telesignal": {
+          "running": 0,
+          "startStop": 0,
+          "discharging": 0,
+          "standby": 1,
+          "charging": 0,
+          "alarm": 0,
+          "fault": 0,
+          "starting": 0,
+          "derating": 0,
+          "gridConnected": 1
+        },
+        "telecontrol": {
+          "auxPowerSleep": false,
+          "hvrtLvrt": false,
+          "parallelEnable": false,
+          "activeIsland": false,
+          "gridFaultRecovery": false,
+          "autoStart": false
+        },
+        "telemetry": {
+          "deratingFactor": 100,
+          "acFrequency": 50.04195781651418,
+          "igbtTempB": 35.599540134843096,
+          "envTemp": 30.766751534999084,
+          "igbtTempC": 33.599540134843096,
+          "igbtTempA": 34.599540134843096,
+          "acVoltageBC": 380.0,
+          "acCurrentB": 0.0,
+          "acCurrentA": 0.0,
+          "acCurrentC": 0.0,
+          "batteryCurrent": 0.0,
+          "activePower": -0.0,
+          "reactivePower": 0,
+          "totalBusVoltage": 0.0,
+          "batteryVoltage": 0.0,
+          "dcVoltage": 750.0,
+          "apparentPower": 0.0,
+          "acVoltageCA": 380.0,
+          "acVoltageAB": 380.0,
+          "positiveBusVoltage": 0.0,
+          "acVoltageC": 222.85611797975167,
+          "acVoltageB": 222.51058916328694,
+          "acVoltageA": 219.2524990255817,
+          "negativeBusVoltage": 0.0,
+          "dcPower": -0.0,
+          "powerFactor": 1.0
+        },
+        "deviceId": "pcs_01",
+        "teleadjust": {
+          "powerFactorSet": 1000,
+          "activePowerSet": 0.0,
+          "minDcChargeVoltage": 500.0,
+          "powerOnOff": 0,
+          "gridModeSwitch": 0,
+          "maxDcDischargeCurrent": 500.0,
+          "minDcDischargeVoltage": 500.0,
+          "offGridVoltage": 220.0,
+          "reactivePowerSet": 0.0,
+          "offGridFrequency": 5000,
+          "powerSoftStartRate": 10,
+          "systemMode": 0,
+          "maxDcChargeCurrent": 500.0
+        }
+      },
+      "bms_01": {
+        "telesignal": {
+          "heartbeat": 0,
+          "insulationStatus": 0
+        },
+        "telecontrol": {
+          "reset": false
+        },
+        "telemetry": {
+          "insulationRP": 500.0,
+          "insulationRN": 500.0,
+          "maxSOH": 10000,
+          "maxTemp": 30.789509298604365,
+          "maxSOC": 53.0,
+          "cellCount": 480,
+          "maxDischargeCurrent": 350.0,
+          "cumulativeChargeEnergy": 0.0,
+          "maxDischargePower": 262.5,
+          "avgSOC": 50.0,
+          "minSOH": 10000,
+          "chargeCount": 0,
+          "dischargeCount": 0,
+          "clusterVoltage": 760.1609456733185,
+          "maxChargeCurrent": 350.0,
+          "avgTemp": 29.289509298604365,
+          "maxCellVoltage": 48460.260286674056,
+          "avgCellVoltage": 47510.059104582404,
+          "minSOC": 47.0,
+          "avgSOH": 10000,
+          "minTemp": 27.789509298604365,
+          "totalSOE": 500.0,
+          "totalSOC": 50.0,
+          "batteryStatus": 1,
+          "clusterCurrent": -14.416499715626928,
+          "minCellVoltage": 46559.85792249075,
+          "tempCount": 0,
+          "maxChargePower": 262.5,
+          "cumulativeDischargeEnergy": 0.0,
+          "totalSOH": 100.0
+        },
+        "deviceId": "bms_01",
+        "teleadjust": {}
+      },
+      "meter_01": {
+        "telesignal": {
+          "reversePower": 0,
+          "alarm": 0
+        },
+        "telecontrol": {},
+        "telemetry": {
+          "current": 0.0,
+          "forwardEnergy": 0,
+          "instantPower": -0.0,
+          "reverseEnergy": 0,
+          "voltage": 380
+        },
+        "deviceId": "meter_01",
+        "teleadjust": {
+          "powerLimit": 0.0
+        }
+      },
+      "dcdc_01": {
+        "telesignal": {
+          "running": 1,
+          "ready": 0,
+          "selfCheck": 0,
+          "initializing": 0
+        },
+        "telecontrol": {
+          "startStop": false,
+          "reset": false
+        },
+        "telemetry": {
+          "ratedPower": 50.0,
+          "hvVoltage": 750.0,
+          "moduleTemp": 31.62954663165311,
+          "batteryStatus": 0,
+          "batteryVoltage": 450.0,
+          "batteryPower": -10.958860057130092,
+          "batteryCurrent": -14.611813409506789
+        },
+        "deviceId": "dcdc_01",
+        "teleadjust": {
+          "batteryCurrentSet": 0.0,
+          "hvVoltageSet": 0.0,
+          "lvVoltageSet": 0.0,
+          "constVoltageSet": 0.0,
+          "batteryPowerSet": 0.0
+        }
+      },
+      "dcdc_02": {
+        "telesignal": {
+          "running": 1,
+          "ready": 0,
+          "selfCheck": 0,
+          "initializing": 0
+        },
+        "telecontrol": {
+          "startStop": false,
+          "reset": false
+        },
+        "telemetry": {
+          "ratedPower": 50.0,
+          "hvVoltage": 750.0,
+          "moduleTemp": 31.130604632568176,
+          "batteryStatus": 0,
+          "batteryVoltage": 300.0,
+          "batteryPower": -10.958860057130092,
+          "batteryCurrent": -14.611813409506789
+        },
+        "deviceId": "dcdc_02",
+        "teleadjust": {
+          "batteryCurrentSet": 0.0,
+          "hvVoltageSet": 0.0,
+          "lvVoltageSet": 0.0,
+          "constVoltageSet": 0.0,
+          "batteryPowerSet": 0.0
+        }
+      },
+      "dc_load_01": {
+        "telesignal": {
+          "enabled": 1
+        },
+        "telecontrol": {
+          "enable": true
+        },
+        "telemetry": {
+          "current": 24.076110489593415,
+          "activePower": 18.057082867195064,
+          "voltage": 750.0
+        },
+        "deviceId": "dc_load_01",
+        "teleadjust": {
+          "activePowerSet": 0.0
+        }
+      },
+      "bus_dc": {
+        "telesignal": {},
+        "telecontrol": {},
+        "telemetry": {
+          "current": 77.37584779820041,
+          "voltage": 750.0,
+          "activePower": 21.917720114260185
+        },
+        "deviceId": "bus_dc",
+        "teleadjust": {}
+      },
+      "mppt_01": {
+        "telesignal": {
+          "running": 1,
+          "faultResetLimit": 0,
+          "ready": 0,
+          "selfCheck": 0,
+          "initializing": 0
+        },
+        "telecontrol": {
+          "startStop": false,
+          "reset": false
+        },
+        "telemetry": {
+          "pv3Current": 0.009950046926330532,
+          "ratedPower": 100.0,
+          "moduleTemp": 42.387892783547784,
+          "pv1Voltage": 627.4126132254579,
+          "pv2Voltage": 614.6557368508763,
+          "pv3Voltage": 691.5777886860934,
+          "pv4Voltage": 616.2241091044399,
+          "pv1Current": 0.010567849973225924,
+          "pv4Current": 0.01178788866256602,
+          "pv1Power": 6.630402367876263,
+          "pv2Current": 0.012535642982959621,
+          "pv2Power": 7.705104874590563,
+          "pv4Power": 7.263981189312073,
+          "hvVoltage": 750.0,
+          "pv3Power": 6.881231450634529
+        },
+        "deviceId": "mppt_01",
+        "teleadjust": {
+          "hvVoltageSet": 0.0,
+          "powerLimitEnable": false,
+          "powerLimitSet": 0.0
+        }
+      }
+    },
+    "inputs": {
+      "soc": 50.0,
+      "pacL": 17.996623770095482,
+      "pdcL": 18.057082867195064,
+      "ppv": 29.015942924325156
+    },
+    "busPowers": {
+      "bus_ac": 17.996623770095482,
+      "bus_dc": 21.917720114260185
+    },
+    "subState": "PV_EXCESS_TO_BAT",
+    "pbatManualMode": false,
+    "systemState": "GRID_CONNECTED",
+    "weather": {
+      "cloudCover": 0.02127563844783629,
+      "condition": "CLEAR",
+      "irradiance": 554.7487864928911,
+      "ambientTemp": 30.766751534999084
+    },
+    "busVoltages": {
+      "bus_ac": 380.0,
+      "bus_dc": 750.0
+    },
+    "busCurrents": {
+      "bus_ac": 27.34384309301003,
+      "bus_dc": 77.37584779820041
+    },
+    "simulationTime": 56034.0,
+    "timestamp": "2026-05-06T15:34:13.5192271"
   },
-  "timestamp": 1778049707625
+  "timestamp": 1778052853519
 }
+
+
+
+
+
+
+

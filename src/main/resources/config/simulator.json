@@ -1,6 +1,6 @@
 {
   "simulator": {
-    "stepIntervalMs": 1000,
+    "stepIntervalMs": 2000,
     "timeScale": 1.0,
     "enabled": false
   },

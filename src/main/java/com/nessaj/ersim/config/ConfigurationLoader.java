@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +48,44 @@ public class ConfigurationLoader {
         this.pointMap = new HashMap<>();
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        this.configPath = System.getProperty("config.path", "src/main/resources/config");
+        String externalPath = System.getProperty("config.path");
+        if (externalPath != null && !externalPath.isEmpty()) {
+            this.configPath = externalPath;
+        } else {
+            // 默认使用外部配置目录
+            this.configPath = "config";
+        }
+    }
+
+    /**
+     * 优先从外部文件加载，如果不存在则从classpath(JAR内)加载
+     */
+    private String readFileContent(String fileName) throws IOException {
+        File externalFile = new File(configPath, fileName);
+        if (externalFile.exists() && externalFile.isFile()) {
+            log.info("Loading config from external file: {}", externalFile.getAbsolutePath());
+            return new String(java.nio.file.Files.readAllBytes(externalFile.toPath()), StandardCharsets.UTF_8);
+        }
+        // 从classpath读取（JAR内）
+        String classpathPath = "/config/" + fileName;
+        InputStream is = getClass().getResourceAsStream(classpathPath);
+        if (is != null) {
+            log.info("Loading config from classpath: {}", classpathPath);
+            return new String(is.readAllBytes(), StandardCharsets.UTF_8);
+        }
+        throw new IOException("Config file not found in external path or classpath: " + fileName);
+    }
+
+    /**
+     * 检查配置文件是否存在（外部或classpath）
+     */
+    private boolean configFileExists(String fileName) {
+        File externalFile = new File(configPath, fileName);
+        if (externalFile.exists() && externalFile.isFile()) {
+            return true;
+        }
+        String classpathPath = "/config/" + fileName;
+        return getClass().getResource(classpathPath) != null;
     }
 
     @PostConstruct
@@ -83,12 +122,12 @@ public class ConfigurationLoader {
 
     private List<Device> loadDevicesFromJson() {
         try {
-            File file = new File(configPath, "device.json");
-            if (!file.exists()) {
+            if (!configFileExists("device.json")) {
                 log.warn("Device configuration file not found, returning empty list");
                 return List.of();
             }
-            DeviceWrapper wrapper = objectMapper.readValue(file, DeviceWrapper.class);
+            String content = readFileContent("device.json");
+            DeviceWrapper wrapper = objectMapper.readValue(content, DeviceWrapper.class);
             if (wrapper != null && wrapper.getDevices() != null) {
                 deviceMap.clear();
                 for (Device device : wrapper.getDevices()) {
@@ -140,12 +179,12 @@ public class ConfigurationLoader {
 
     private List<Topology> loadTopologiesFromJson() {
         try {
-            File file = new File(configPath, "topology.json");
-            if (!file.exists()) {
+            if (!configFileExists("topology.json")) {
                 log.warn("Topology configuration file not found, returning empty list");
                 return List.of();
             }
-            TopologyWrapper wrapper = objectMapper.readValue(file, TopologyWrapper.class);
+            String content = readFileContent("topology.json");
+            TopologyWrapper wrapper = objectMapper.readValue(content, TopologyWrapper.class);
             if (wrapper != null && wrapper.getTopologies() != null) {
                 topologyMap.clear();
                 for (Topology topology : wrapper.getTopologies()) {
@@ -182,12 +221,12 @@ public class ConfigurationLoader {
 
     private List<Point> loadPointsFromJson() {
         try {
-            File file = new File(configPath, "point.json");
-            if (!file.exists()) {
+            if (!configFileExists("point.json")) {
                 log.warn("Point configuration file not found, returning empty list");
                 return List.of();
             }
-            PointWrapper wrapper = objectMapper.readValue(file, PointWrapper.class);
+            String content = readFileContent("point.json");
+            PointWrapper wrapper = objectMapper.readValue(content, PointWrapper.class);
             if (wrapper != null && wrapper.getPoints() != null) {
                 pointMap.clear();
                 for (Point point : wrapper.getPoints()) {
@@ -220,13 +259,14 @@ public class ConfigurationLoader {
 
     public void loadDeviceTypes() {
         try {
-            File file = new File(configPath, "device_type.json");
-            DeviceTypeDefinitionWrapper wrapper = objectMapper.readValue(file, DeviceTypeDefinitionWrapper.class);
+            String content = readFileContent("device_type.json");
+            DeviceTypeDefinitionWrapper wrapper = objectMapper.readValue(content, DeviceTypeDefinitionWrapper.class);
             if (wrapper != null && wrapper.getDeviceTypes() != null) {
                 deviceTypeMap.clear();
                 for (DeviceTypeDefinition typeDef : wrapper.getDeviceTypes()) {
                     deviceTypeMap.put(typeDef.getType(), typeDef);
                 }
+                log.info("Loaded {} device types", deviceTypeMap.size());
             }
         } catch (IOException e) {
             throw new RuntimeException("Failed to load device types configuration", e);
@@ -235,8 +275,8 @@ public class ConfigurationLoader {
 
     public void loadDevices() {
         try {
-            File file = new File(configPath, "device.json");
-            DeviceWrapper wrapper = objectMapper.readValue(file, DeviceWrapper.class);
+            String content = readFileContent("device.json");
+            DeviceWrapper wrapper = objectMapper.readValue(content, DeviceWrapper.class);
             if (wrapper != null && wrapper.getDevices() != null) {
                 deviceMap.clear();
                 for (Device device : wrapper.getDevices()) {
@@ -264,8 +304,9 @@ public class ConfigurationLoader {
         try {
             File file = new File(configPath, "device.json");
             DeviceWrapper wrapper = new DeviceWrapper();
-            wrapper.setDevices(deviceMap.values().stream().collect(Collectors.toList()));
+            wrapper.setDevices(new ArrayList<>(deviceMap.values()));
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, wrapper);
+            log.info("Saved {} devices to external config: {}", deviceMap.size(), file.getAbsolutePath());
         } catch (IOException e) {
             log.error("Failed to save devices configuration", e);
         }
@@ -275,6 +316,7 @@ public class ConfigurationLoader {
         try {
             File file = new File(configPath, "simulator.json");
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, config);
+            log.info("Saved simulator config to: {}", file.getAbsolutePath());
         } catch (IOException e) {
             log.error("Failed to save simulator configuration", e);
         }
@@ -286,6 +328,9 @@ public class ConfigurationLoader {
             if (file.exists()) {
                 return objectMapper.readValue(file, SimulatorConfigWrapper.class);
             }
+            // 尝试从classpath加载
+            String content = readFileContent("simulator.json");
+            return objectMapper.readValue(content, SimulatorConfigWrapper.class);
         } catch (IOException e) {
             log.error("Failed to load simulator configuration", e);
         }
@@ -296,8 +341,9 @@ public class ConfigurationLoader {
         try {
             File file = new File(configPath, "topology.json");
             TopologyWrapper wrapper = new TopologyWrapper();
-            wrapper.setTopologies(topologyMap.values().stream().collect(Collectors.toList()));
+            wrapper.setTopologies(new ArrayList<>(topologyMap.values()));
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, wrapper);
+            log.info("Saved {} topologies to external config: {}", topologyMap.size(), file.getAbsolutePath());
         } catch (IOException e) {
             log.error("Failed to save topologies configuration", e);
         }

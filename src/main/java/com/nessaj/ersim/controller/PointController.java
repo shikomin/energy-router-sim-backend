@@ -147,13 +147,13 @@ public class PointController {
             return ResponseEntity.badRequest().body(Map.of("error", "只支持遥测(yc)和遥信(yx)类型的点位发送"));
         }
 
-        String deviceId = runtimeStateService.getDeviceIdByLocalNum(point.getDeviceLocalNum());
-        if (deviceId == null) {
-            deviceId = point.getDeviceLocalNum();
-        }
+//        String deviceId = runtimeStateService.getDeviceIdByLocalNum(point.getDeviceLocalNum());
+//        if (deviceId == null) {
+//            deviceId = point.getDeviceLocalNum();
+//        }
 
         mqttPublisherService.publishManualPointData(
-                deviceId,
+                point.getDeviceLocalNum(),
                 point.getPtId(),
                 signalType,
                 point.getLinkedProp(),

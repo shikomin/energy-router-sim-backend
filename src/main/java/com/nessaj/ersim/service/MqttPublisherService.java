@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nessaj.ersim.config.MqttProperties;
 import com.nessaj.ersim.model.DeviceRuntimeData;
+import com.nessaj.ersim.model.MqttState;
 import com.nessaj.ersim.model.Point;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 
 @Slf4j
@@ -56,6 +58,11 @@ public class MqttPublisherService {
     private Consumer<String> messageCallback;
     private final ExecutorService publishExecutor;
     private final RuntimeStateService runtimeStateService;
+
+    // MQTT状态统计
+    private final AtomicLong messageCount = new AtomicLong(0);
+    private final AtomicLong pointCount = new AtomicLong(0);
+    private final MqttState mqttState = new MqttState();
 
     public MqttPublisherService(MqttProperties mqttProperties, ObjectMapper objectMapper,
                                 @Autowired(required = false) RuntimeStateService runtimeStateService) {
@@ -318,7 +325,8 @@ public class MqttPublisherService {
         }
         try {
             publishInternal(topic, payload);
-            log.info("发布点位数据:{}", payload);
+            log.debug("发布点位数据");
+//            log.info("发布点位数据:{}", payload);
         } catch (MqttException e) {
             log.error("Failed to publish to topic {}, queueing for retry: {}", topic, e.getMessage());
             messageQueue.offer(payload);
@@ -363,6 +371,25 @@ public class MqttPublisherService {
         return isConnected.get() && mqttClient != null && mqttClient.isConnected();
     }
 
+    /**
+     * 获取当前MQTT状态
+     */
+    public MqttState getMqttState() {
+        mqttState.setConnected(isConnected());
+        mqttState.setBrokerAddress(mqttProperties.getHost() + ":" + mqttProperties.getPort());
+        mqttState.setMessageCount(messageCount.get());
+        mqttState.setPointCount(pointCount.get());
+        return mqttState;
+    }
+
+    /**
+     * 重置消息统计计数
+     */
+    public void resetMessageCount() {
+        messageCount.set(0);
+        pointCount.set(0);
+    }
+
     public Map<String, Object> buildPointMessage(String ptId, String signalType, String deviceLocalNum,
                                                  String linkedProp, Object value, String unit) {
         Map<String, Object> msg = new HashMap<>();
@@ -379,6 +406,7 @@ public class MqttPublisherService {
     public void publishSimulationData(Map<String, DeviceRuntimeData> runtimeDataMap, List<Point> allPoints) {
         long startTime = System.currentTimeMillis();
         long timestamp = Instant.now().toEpochMilli();
+        final AtomicLong currentPointCount = new AtomicLong(0);
 
         List<Point> ycPoints = new ArrayList<>();
         List<Point> yxPoints = new ArrayList<>();
@@ -426,17 +454,23 @@ public class MqttPublisherService {
 
         if (!ycByDevice.isEmpty()) {
             futures.add(CompletableFuture.runAsync(() -> {
-                publishYcData(timestamp, ycByDevice, runtimeDataMap);
+                currentPointCount.addAndGet(publishYcData(timestamp, ycByDevice, runtimeDataMap));
             }, publishExecutor));
         }
 
         if (!yxByDevice.isEmpty()) {
             futures.add(CompletableFuture.runAsync(() -> {
-                publishYxData(timestamp, yxByDevice, runtimeDataMap);
+                currentPointCount.addAndGet(publishYxData(timestamp, yxByDevice, runtimeDataMap));
             }, publishExecutor));
         }
 
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+
+        // 更新统计计数
+        if (currentPointCount.get() > 0) {
+            messageCount.incrementAndGet();
+            pointCount.addAndGet(currentPointCount.get());
+        }
 
         long elapsed = System.currentTimeMillis() - startTime;
         if (elapsed > 100) {
@@ -454,11 +488,12 @@ public class MqttPublisherService {
         return grouped;
     }
 
-    private void publishYcData(long timestamp, Map<String, List<Point>> pointsByDevice,
+    private long publishYcData(long timestamp, Map<String, List<Point>> pointsByDevice,
                                Map<String, DeviceRuntimeData> runtimeDataMap) {
         Map<String, Object> ycMessage = buildBaseMessage(timestamp, "yc");
 
         List<Map<String, Object>> deviceDataList = new ArrayList<>();
+        long totalPoints = 0;
         for (Map.Entry<String, List<Point>> entry : pointsByDevice.entrySet()) {
             String deviceId = entry.getKey();
             List<Point> points = entry.getValue();
@@ -468,6 +503,10 @@ public class MqttPublisherService {
 
             List<Map<String, Object>> dataObjects = new ArrayList<>();
             for (Point point : points) {
+                String mappedId = runtimeStateService.getDeviceIdByLocalNum(point.getDeviceLocalNum());
+                if (mappedId != null) {
+                    deviceId = mappedId;
+                }
                 DeviceRuntimeData runtimeData = runtimeDataMap.get(deviceId);
                 if (runtimeData == null) continue;
 
@@ -478,6 +517,7 @@ public class MqttPublisherService {
                 dataObj.put("data_id", point.getPtId());
                 dataObj.put("real_value", String.valueOf(value));
                 dataObjects.add(dataObj);
+                totalPoints++;
             }
 
             if (!dataObjects.isEmpty()) {
@@ -486,8 +526,9 @@ public class MqttPublisherService {
             }
         }
 
-        if (!deviceDataList.isEmpty()) {
-            ycMessage.put("device_data", deviceDataList);
+        Map<String, Object> stationData = (Map<String, Object>) ycMessage.get("station_data");
+        if (!deviceDataList.isEmpty() && stationData != null) {
+            stationData.put("device_data", deviceDataList);
             try {
                 String payload = objectMapper.writeValueAsString(ycMessage);
                 publishToTopic(mqttProperties.getPublishTopic(), payload);
@@ -495,13 +536,15 @@ public class MqttPublisherService {
                 log.error("Failed to serialize YC message: {}", e.getMessage());
             }
         }
+        return totalPoints;
     }
 
-    private void publishYxData(long timestamp, Map<String, List<Point>> pointsByDevice,
+    private long publishYxData(long timestamp, Map<String, List<Point>> pointsByDevice,
                                Map<String, DeviceRuntimeData> runtimeDataMap) {
         Map<String, Object> yxMessage = buildBaseMessage(timestamp, "yx");
 
         List<Map<String, Object>> deviceDataList = new ArrayList<>();
+        long totalPoints = 0;
         for (Map.Entry<String, List<Point>> entry : pointsByDevice.entrySet()) {
             String deviceId = entry.getKey();
             List<Point> points = entry.getValue();
@@ -521,6 +564,7 @@ public class MqttPublisherService {
                 dataObj.put("data_id", point.getPtId());
                 dataObj.put("real_value", String.valueOf(value));
                 dataObjects.add(dataObj);
+                totalPoints++;
             }
 
             if (!dataObjects.isEmpty()) {
@@ -538,6 +582,7 @@ public class MqttPublisherService {
                 log.error("Failed to serialize YX message: {}", e.getMessage());
             }
         }
+        return totalPoints;
     }
 
     private Map<String, Object> buildBaseMessage(long timestamp, String type) {

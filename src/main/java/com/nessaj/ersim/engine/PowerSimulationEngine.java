@@ -33,14 +33,14 @@ public class PowerSimulationEngine {
     private final Map<String, Double> busVoltageMap = new HashMap<>();
     private final Map<String, Double> busCurrentMap = new HashMap<>();
     private final Random random = new Random();
-
+    private long secondsOfDay;
     private double simulationTime = 0;
     private boolean initialized = false;
 
     private double ppv = 0;
     private double pdcL = 0;
     private double pacL = 0;
-    private double soc = 86;
+    private double soc = 69;
     private double pbatSet = 0;
     private double ppcs = 0;
     private double pbatActual = 0;
@@ -48,7 +48,7 @@ public class PowerSimulationEngine {
     private double gridPower = 0;
 
     private double batteryCapacity = 1000;
-    private double maxBatPower = 10;
+    private double maxBatPower = 50;
     private double minSoc = 30;
     private double maxSoc = 95;
 
@@ -72,8 +72,8 @@ public class PowerSimulationEngine {
     @PostConstruct
     public void init() {
         LocalTime now = LocalTime.now();
-        double currentHour = now.getHour() + now.getMinute() / 60.0 + now.getSecond() / 3600.0;
-        this.simulationTime = currentHour * 3600;
+//        double currentHour = now.getHour() + now.getMinute() / 60.0 + now.getSecond() / 3600.0;
+//        this.simulationTime = currentHour * 3600;
         log.info("PowerSimulationEngine initialized - current server time: {}, simulation time starts at: {} seconds", now, this.simulationTime);
     }
 
@@ -85,9 +85,11 @@ public class PowerSimulationEngine {
     public void simulateStep(double deltaTimeSeconds) {
         simulationTime += deltaTimeSeconds;
 
+        LocalTime now =LocalTime.now();
+        secondsOfDay = now.toSecondOfDay();
         if (!initialized) {
             vdc = 750;
-            soc = 86;
+//            soc = 69;
             initialized = true;
             log.info("PowerSimulationEngine simulation state initialized - Vdc: {}V, SOC: {}%", vdc, soc);
         }
@@ -101,7 +103,7 @@ public class PowerSimulationEngine {
     }
 
     private void updateWeather() {
-        double hour = (simulationTime % 86400) / 3600.0;
+        double hour = (secondsOfDay % 86400) / 3600.0;
         double solarElevation = calculateSolarElevation(hour);
 
         if (solarElevation <= 0) {
@@ -131,7 +133,7 @@ public class PowerSimulationEngine {
     }
 
     private void updateInputs() {
-        double hour = (simulationTime % 86400) / 3600.0;
+        double hour = (secondsOfDay % 86400) / 3600.0;
         double solarElevation = calculateSolarElevation(hour);
 
         if (irradiance > 50) {
@@ -242,7 +244,7 @@ public class PowerSimulationEngine {
     }
 
     private void calculateOffGridState() {
-        double hour = (simulationTime % 86400) / 3600.0;
+        double hour = (secondsOfDay  % 86400) / 3600.0;
         double solarElevation = calculateSolarElevation(hour);
         boolean pvActive = solarElevation > 0.1;
         boolean pvLarge = irradiance > 600;
@@ -308,9 +310,9 @@ public class PowerSimulationEngine {
 
     private void updateOutputs(double deltaTimeSeconds) {
         double hoursElapsed = deltaTimeSeconds / 3.6;
-        double deltaSoc = -(pbatActual / batteryCapacity) * hoursElapsed * 100;
+        double deltaSoc = -(pbatActual / batteryCapacity) * hoursElapsed * 10;
         soc = clamp(soc + deltaSoc, 5, 100);
-        soc = Math.round(soc * 100) / 100.0;
+        soc = Math.round(soc * 1000) / 1000.0;
 
         log.debug("Outputs - Pbat_set: {}kW, Ppcs: {}kW, Pbat_actual: {}kW, Vdc: {}V, Grid: {}kW, SOC: {}%",
                 String.format("%.2f", pbatSet), String.format("%.2f", ppcs),
@@ -353,7 +355,8 @@ public class PowerSimulationEngine {
         for (int i = 0; i < 4; i++) {
             pvPowers[i] = (ppv / 4) * (0.9 + random.nextDouble() * 0.2);
             double voltage = 600 + random.nextDouble() * 150;
-            double current = pvPowers[i] / voltage;
+            // 注意单位是kw，还要乘1000
+            double current = pvPowers[i] * 1000 / voltage;
             data.setTelemetryValue("pv" + (i + 1) + "Power", pvPowers[i]);
             data.setTelemetryValue("pv" + (i + 1) + "Voltage", voltage);
             data.setTelemetryValue("pv" + (i + 1) + "Current", current);
@@ -593,6 +596,10 @@ public class PowerSimulationEngine {
             lastPointCacheTime = now;
         }
         mqttPublisherService.publishSimulationData(allRuntimeData, cachedPoints);
+
+        // 推送MQTT状态到WebSocket
+        MqttState mqttState = mqttPublisherService.getMqttState();
+        publisherService.publishMqttState(mqttState);
     }
 
     public void setSystemState(SystemState state) {

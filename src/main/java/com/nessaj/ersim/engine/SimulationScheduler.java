@@ -24,7 +24,7 @@ public class SimulationScheduler {
     private volatile int stepIntervalMs = 1000;
 
     public SimulationScheduler(@Lazy SimulationControlService simulationControlService,
-                              PowerSimulationEngine simulationEngine) {
+                               PowerSimulationEngine simulationEngine) {
         this.simulationControlService = simulationControlService;
         this.simulationEngine = simulationEngine;
     }
@@ -77,7 +77,7 @@ public class SimulationScheduler {
             try {
                 if (active.get() && runtimeStateServiceRunning()) {
                     int interval = simulationControlService.getStepIntervalMs();
-                    simulationEngine.simulateStep(1.0);
+                    simulationEngine.simulateStep(stepIntervalMs / 1000);
                     simulationControlService.addSimulationTime(interval);
                 }
             } catch (Exception e) {
