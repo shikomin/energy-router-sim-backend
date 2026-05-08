@@ -23,8 +23,8 @@ public class PointController {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public PointController(PointRepository pointRepository,
-                          MqttPublisherService mqttPublisherService,
-                          RuntimeStateService runtimeStateService) {
+                           MqttPublisherService mqttPublisherService,
+                           RuntimeStateService runtimeStateService) {
         this.pointRepository = pointRepository;
         this.mqttPublisherService = mqttPublisherService;
         this.runtimeStateService = runtimeStateService;
@@ -146,27 +146,32 @@ public class PointController {
         if (!"yc".equals(signalType) && !"yx".equals(signalType)) {
             return ResponseEntity.badRequest().body(Map.of("error", "只支持遥测(yc)和遥信(yx)类型的点位发送"));
         }
-
-//        String deviceId = runtimeStateService.getDeviceIdByLocalNum(point.getDeviceLocalNum());
-//        if (deviceId == null) {
-//            deviceId = point.getDeviceLocalNum();
-//        }
-
-        mqttPublisherService.publishManualPointData(
-                point.getDeviceLocalNum(),
-                point.getPtId(),
-                signalType,
-                point.getLinkedProp(),
-                value.trim(),
-                null
-        );
+        Object asSoe = payload.get("isSoe");
+        if (asSoe != null && ((Boolean) asSoe)) {
+            signalType = "soe";
+            mqttPublisherService.publishManualSoePointData(
+                    point.getDeviceLocalNum(),
+                    point.getPtId(),
+                    signalType,
+                    value.trim()
+            );
+        } else {
+            mqttPublisherService.publishManualPointData(
+                    point.getDeviceLocalNum(),
+                    point.getPtId(),
+                    signalType,
+                    point.getLinkedProp(),
+                    value.trim(),
+                    null
+            );
+        }
 
         return ResponseEntity.ok(Map.of("success", true, "message", "发送成功"));
     }
 
     private boolean isValidSignalType(String signalType) {
         return "yx".equals(signalType) || "yc".equals(signalType)
-            || "yk".equals(signalType) || "yt".equals(signalType);
+                || "yk".equals(signalType) || "yt".equals(signalType);
     }
 
     private boolean isValidModelType(Integer modelType) {

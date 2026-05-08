@@ -290,6 +290,29 @@ public class MqttPublisherService {
         }
     }
 
+
+    public void publishManualSoePointData(String deviceId, String ptId, String signalType, String value) {
+        long timestamp = Instant.now().toEpochMilli();
+        Map<String, Object> message = buildBaseMessage(timestamp, signalType);
+        Map<String, Object> deviceData = new HashMap<>();
+        deviceData.put("device_id", deviceId);
+        deviceData.put("data_id", ptId);
+        deviceData.put("soe_type", "1");
+        deviceData.put("soe_value", value);
+        deviceData.put("soe_level", "1");
+        deviceData.put("timestamp", String.valueOf(timestamp));
+        Map<String, Object> stationData = (Map<String, Object>) message.get("station_data");
+        stationData.put("device_data", deviceData);
+        try {
+            String payload = objectMapper.writeValueAsString(message);
+            publishToTopic(mqttProperties.getPublishTopic(), payload);
+            log.info("Manual point data sent - deviceId: {}, ptId: {}, type: {}, value: {}",
+                    deviceId, ptId, signalType, value);
+        } catch (JsonProcessingException e) {
+            log.error("Failed to serialize manual point data: {}", e.getMessage());
+        }
+    }
+
     public void publishDeviceData(String deviceId, String deviceName, String deviceType,
                                   Map<String, Object> properties) {
         DeviceData deviceData = new DeviceData();

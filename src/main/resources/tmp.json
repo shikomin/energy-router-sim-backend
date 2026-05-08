@@ -3,11 +3,11 @@
   "topic": "/topic/devices",
   "data": {
     "outputs": {
-      "pbatSet": -10.958860057130092,
+      "pbatActual": 0.0,
+      "ppcs": -5.2817077856871,
+      "pbatSet": 0.0,
       "vdc": 750.0,
-      "gridPower": -0.0,
-      "pbatActual": -10.958860057130092,
-      "ppcs": 0.0
+      "gridPower": 5.2817077856871
     },
     "pbatManualSetpoint": 0.0,
     "devices": {
@@ -15,9 +15,9 @@
         "telesignal": {},
         "telecontrol": {},
         "telemetry": {
-          "current": 27.34384309301003,
+          "current": 32.28163157755256,
           "voltage": 380,
-          "activePower": 17.996623770095482
+          "activePower": 21.246478639081992
         },
         "deviceId": "bus_ac",
         "teleadjust": {}
@@ -30,12 +30,12 @@
           "enable": true
         },
         "telemetry": {
-          "current": 27.34384309301003,
-          "reactivePower": 5.398987131028645,
-          "apparentPower": 19.796286147105032,
-          "activePower": 17.996623770095482,
+          "current": 24.256671407248835,
+          "reactivePower": 4.789431256018468,
+          "apparentPower": 17.561247938734386,
+          "activePower": 15.964770853394894,
           "powerFactor": 0.9,
-          "voltage": 380.14798627186593
+          "voltage": 377.06152218089613
         },
         "deviceId": "ac_load_01",
         "teleadjust": {
@@ -45,11 +45,11 @@
       },
       "pcs_01": {
         "telesignal": {
-          "running": 0,
+          "running": 1,
           "startStop": 0,
           "discharging": 0,
-          "standby": 1,
-          "charging": 0,
+          "standby": 0,
+          "charging": 1,
           "alarm": 0,
           "fault": 0,
           "starting": 0,
@@ -66,30 +66,30 @@
         },
         "telemetry": {
           "deratingFactor": 100,
-          "acFrequency": 50.04195781651418,
-          "igbtTempB": 35.599540134843096,
-          "envTemp": 30.766751534999084,
-          "igbtTempC": 33.599540134843096,
-          "igbtTempA": 34.599540134843096,
+          "acFrequency": 49.98692524229964,
+          "igbtTempB": 36.36002047059711,
+          "envTemp": 28.983000285320806,
+          "igbtTempC": 34.36002047059711,
+          "igbtTempA": 35.36002047059711,
           "acVoltageBC": 380.0,
           "acCurrentB": 0.0,
           "acCurrentA": 0.0,
           "acCurrentC": 0.0,
           "batteryCurrent": 0.0,
-          "activePower": -0.0,
+          "activePower": 5.2817077856871,
           "reactivePower": 0,
           "totalBusVoltage": 0.0,
           "batteryVoltage": 0.0,
           "dcVoltage": 750.0,
-          "apparentPower": 0.0,
+          "apparentPower": 5.2817077856871,
           "acVoltageCA": 380.0,
           "acVoltageAB": 380.0,
           "positiveBusVoltage": 0.0,
-          "acVoltageC": 222.85611797975167,
-          "acVoltageB": 222.51058916328694,
-          "acVoltageA": 219.2524990255817,
+          "acVoltageC": 217.04669507573774,
+          "acVoltageB": 223.60069300857063,
+          "acVoltageA": 218.56212682434827,
           "negativeBusVoltage": 0.0,
-          "dcPower": -0.0,
+          "dcPower": 5.2817077856871,
           "powerFactor": 1.0
         },
         "deviceId": "pcs_01",
@@ -121,29 +121,29 @@
           "insulationRP": 500.0,
           "insulationRN": 500.0,
           "maxSOH": 10000,
-          "maxTemp": 30.789509298604365,
-          "maxSOC": 53.0,
+          "maxTemp": 29.375577361328865,
+          "maxSOC": 82.995,
           "cellCount": 480,
           "maxDischargeCurrent": 350.0,
           "cumulativeChargeEnergy": 0.0,
           "maxDischargePower": 262.5,
-          "avgSOC": 50.0,
+          "avgSOC": 79.995,
           "minSOH": 10000,
           "chargeCount": 0,
           "dischargeCount": 0,
-          "clusterVoltage": 760.1609456733185,
+          "clusterVoltage": 747.7385005172017,
           "maxChargeCurrent": 350.0,
-          "avgTemp": 29.289509298604365,
-          "maxCellVoltage": 48460.260286674056,
-          "avgCellVoltage": 47510.059104582404,
-          "minSOC": 47.0,
+          "avgTemp": 27.875577361328865,
+          "maxCellVoltage": 47668.329407971614,
+          "avgCellVoltage": 46733.65628232511,
+          "minSOC": 76.995,
           "avgSOH": 10000,
-          "minTemp": 27.789509298604365,
-          "totalSOE": 500.0,
-          "totalSOC": 50.0,
-          "batteryStatus": 1,
-          "clusterCurrent": -14.416499715626928,
-          "minCellVoltage": 46559.85792249075,
+          "minTemp": 26.375577361328865,
+          "totalSOE": 799.95,
+          "totalSOC": 79.995,
+          "batteryStatus": 0,
+          "clusterCurrent": 0.0,
+          "minCellVoltage": 45798.9831566786,
           "tempCount": 0,
           "maxChargePower": 262.5,
           "cumulativeDischargeEnergy": 0.0,
@@ -159,9 +159,9 @@
         },
         "telecontrol": {},
         "telemetry": {
-          "current": 0.0,
+          "current": 8.024960170303727,
           "forwardEnergy": 0,
-          "instantPower": -0.0,
+          "instantPower": 5.2817077856871,
           "reverseEnergy": 0,
           "voltage": 380
         },
@@ -172,8 +172,8 @@
       },
       "dcdc_01": {
         "telesignal": {
-          "running": 1,
-          "ready": 0,
+          "running": 0,
+          "ready": 1,
           "selfCheck": 0,
           "initializing": 0
         },
@@ -184,11 +184,11 @@
         "telemetry": {
           "ratedPower": 50.0,
           "hvVoltage": 750.0,
-          "moduleTemp": 31.62954663165311,
+          "moduleTemp": 28.72701723995402,
           "batteryStatus": 0,
           "batteryVoltage": 450.0,
-          "batteryPower": -10.958860057130092,
-          "batteryCurrent": -14.611813409506789
+          "batteryPower": 0.0,
+          "batteryCurrent": 0.0
         },
         "deviceId": "dcdc_01",
         "teleadjust": {
@@ -201,8 +201,8 @@
       },
       "dcdc_02": {
         "telesignal": {
-          "running": 1,
-          "ready": 0,
+          "running": 0,
+          "ready": 1,
           "selfCheck": 0,
           "initializing": 0
         },
@@ -213,11 +213,11 @@
         "telemetry": {
           "ratedPower": 50.0,
           "hvVoltage": 750.0,
-          "moduleTemp": 31.130604632568176,
+          "moduleTemp": 28.49863920620768,
           "batteryStatus": 0,
           "batteryVoltage": 300.0,
-          "batteryPower": -10.958860057130092,
-          "batteryCurrent": -14.611813409506789
+          "batteryPower": 0.0,
+          "batteryCurrent": 0.0
         },
         "deviceId": "dcdc_02",
         "teleadjust": {
@@ -236,8 +236,8 @@
           "enable": true
         },
         "telemetry": {
-          "current": 24.076110489593415,
-          "activePower": 18.057082867195064,
+          "current": 24.180904826601278,
+          "activePower": 18.13567861995096,
           "voltage": 750.0
         },
         "deviceId": "dc_load_01",
@@ -249,9 +249,9 @@
         "telesignal": {},
         "telecontrol": {},
         "telemetry": {
-          "current": 77.37584779820041,
+          "current": 41.319532605619756,
           "voltage": 750.0,
-          "activePower": 21.917720114260185
+          "activePower": -5.2817077856871
         },
         "deviceId": "bus_dc",
         "teleadjust": {}
@@ -269,21 +269,21 @@
           "reset": false
         },
         "telemetry": {
-          "pv3Current": 0.009950046926330532,
+          "pv3Current": 4.6642450832771285,
           "ratedPower": 100.0,
-          "moduleTemp": 42.387892783547784,
-          "pv1Voltage": 627.4126132254579,
-          "pv2Voltage": 614.6557368508763,
-          "pv3Voltage": 691.5777886860934,
-          "pv4Voltage": 616.2241091044399,
-          "pv1Current": 0.010567849973225924,
-          "pv4Current": 0.01178788866256602,
-          "pv1Power": 6.630402367876263,
-          "pv2Current": 0.012535642982959621,
-          "pv2Power": 7.705104874590563,
-          "pv4Power": 7.263981189312073,
+          "moduleTemp": 34.10323158270082,
+          "pv1Voltage": 631.8008360810265,
+          "pv2Voltage": 740.150443949806,
+          "pv3Voltage": 679.7599474418234,
+          "pv4Voltage": 604.0560168417882,
+          "pv1Current": 4.591301570915263,
+          "pv4Current": 4.865512314582222,
+          "pv1Power": 2.900788171204394,
+          "pv2Current": 4.583517314253798,
+          "pv2Power": 3.392492374996571,
+          "pv4Power": 2.9390419886412062,
           "hvVoltage": 750.0,
-          "pv3Power": 6.881231450634529
+          "pv3Power": 3.1705669926642446
         },
         "deviceId": "mppt_01",
         "teleadjust": {
@@ -294,41 +294,34 @@
       }
     },
     "inputs": {
-      "soc": 50.0,
-      "pacL": 17.996623770095482,
-      "pdcL": 18.057082867195064,
-      "ppv": 29.015942924325156
+      "pdcL": 18.13567861995096,
+      "ppv": 12.853970834263858,
+      "soc": 79.995,
+      "pacL": 15.964770853394894
     },
     "busPowers": {
-      "bus_ac": 17.996623770095482,
-      "bus_dc": 21.917720114260185
+      "bus_ac": 21.246478639081992,
+      "bus_dc": -5.2817077856871
     },
-    "subState": "PV_EXCESS_TO_BAT",
+    "subState": "STANDBY",
     "pbatManualMode": false,
     "systemState": "GRID_CONNECTED",
     "weather": {
-      "cloudCover": 0.02127563844783629,
-      "condition": "CLEAR",
-      "irradiance": 554.7487864928911,
-      "ambientTemp": 30.766751534999084
+      "irradiance": 261.326566871554,
+      "ambientTemp": 28.983000285320806,
+      "cloudCover": 0.11045433838601643,
+      "condition": "CLEAR"
     },
     "busVoltages": {
       "bus_ac": 380.0,
       "bus_dc": 750.0
     },
     "busCurrents": {
-      "bus_ac": 27.34384309301003,
-      "bus_dc": 77.37584779820041
+      "bus_ac": 32.28163157755256,
+      "bus_dc": 41.319532605619756
     },
-    "simulationTime": 56034.0,
-    "timestamp": "2026-05-06T15:34:13.5192271"
+    "simulationTime": 3740.0,
+    "timestamp": "2026-05-07T16:52:54.914756635"
   },
-  "timestamp": 1778052853519
+  "timestamp": 1778143974914
 }
-
-
-
-
-
-
-
